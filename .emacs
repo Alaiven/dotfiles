@@ -35,9 +35,13 @@
  ;; If there is more than one, they won't work right.
  )
 
-(global-linum-mode 1)
+
 
 ;;------------------------------------------MY
+
+;; lines in every file
+
+(global-linum-mode 1)
 
 ;; Interesting themes from www.emacsthemes.com
 ;;
@@ -47,7 +51,7 @@
 ;; dark   -  Graham
 ;; blue   -  Tronesque
 ;;        -  Deep Thought
-;;
+
 
 ;; Installed Plugins
 ;; js2-mode
@@ -76,7 +80,18 @@
 (add-hook 'nasm-mode-hook
           (lambda ()
             (set (make-local-variable 'compile-command)
-                 (concat "nasm " (file-name-sans-extension buffer-file-name)  ".asm -felf64 -o " (file-name-sans-extension buffer-file-name) ".o && ld -m elf_x86_64 " (file-name-sans-extension buffer-file-name) ".o -o " (file-name-sans-extension buffer-file-name)))))
+                 (concat
+		  "nasm "
+		  (file-name-sans-extension buffer-file-name)
+		  ".asm -felf64 -o "
+		  (file-name-sans-extension buffer-file-name)
+		  ".o && ld -m elf_x86_64 "
+		  (file-name-sans-extension buffer-file-name)
+		  ".o -o "
+		  (file-name-sans-extension buffer-file-name))
+		 )
+	    )
+	  )
 
 ;; C-c C-c for compiling haskell
 
@@ -129,18 +144,22 @@
 (add-hook 'after-init-hook 'global-flycheck-mode)
 
 ;; disable jshint since we prefer eslint checking
+
 (setq-default flycheck-disabled-checkers
   (append flycheck-disabled-checkers
 	  '(javascript-jshint)))
 
 ;; use eslint with web-mode for jsx files
+
 (flycheck-add-mode 'javascript-eslint 'web-mode)
 
 ;; customize flycheck temp file prefix
+
 (setq-default flycheck-temp-prefix ".flycheck")
 
 ;; for better jsx syntax-highlighting in web-mode
 ;; - courtesy of Patrick @halbtuerke
+
 (defadvice web-mode-highlight-part (around tweak-jsx activate)
   (if (equal web-mode-content-type "jsx")
     (let ((web-mode-enable-part-face nil))
