@@ -35,8 +35,6 @@
  ;; If there is more than one, they won't work right.
  )
 
-
-
 ;;------------------------------------------MY
 
 ;; lines in every file
@@ -62,7 +60,23 @@
 ;; auto-complete
 ;; nasm-mode
 ;; haskell-mode
+;; fsharp-mode
+;; help
+;; magit
 
+;; magit C-x g for git status
+
+(global-set-key (kbd "C-x g") 'magit-status)
+
+;; magit C-x M-g for git popup
+
+(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
+
+;; helm config, M-x for helm-M-x
+
+(require 'helm-config)
+
+(global-set-key (kbd "M-x") 'helm-M-x)
 
 ;; enable nasm-mode
 
@@ -96,8 +110,24 @@
 ;; C-c C-c for compiling haskell
 
 (require 'haskell-mode)
+;(eval-after-load "haskell-mode"
+;    '(define-key haskell-mode-map (kbd "C-c C-c") 'haskell-compile))
+
 (eval-after-load "haskell-mode"
-    '(define-key haskell-mode-map (kbd "C-c C-c") 'haskell-compile))
+  '(define-key haskell-mode-map (kbd "C-c C-c") 'compile))
+
+(add-hook 'haskell-mode-hook
+          (lambda ()
+            (set (make-local-variable 'compile-command)
+                 (concat
+		  "ghc "
+		  (file-name-sans-extension buffer-file-name)
+		  ".hs -o "
+		  (file-name-sans-extension buffer-file-name)
+		  )
+		 )
+	    )
+	  )
 
 ;; catalog tree
 
@@ -142,6 +172,10 @@
 
 (require 'flycheck)
 (add-hook 'after-init-hook 'global-flycheck-mode)
+
+;; c++11 on flycheck
+
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
 
 ;; disable jshint since we prefer eslint checking
 
