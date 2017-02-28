@@ -37,7 +37,72 @@
  ;; If there is more than one, they won't work right.
  )
 
-;;------------------------------------------MY
+;;------------------------- MINE -------------------------
+
+;;---------------------- INSTALLERS ----------------------
+
+(unless (package-installed-p 'js2-mode)
+  (package-install 'js2-mode))
+
+(unless (package-installed-p 'web-mode)
+  (package-install 'web-mode))
+
+(unless (package-installed-p 'json-mode)
+  (package-install 'json-mode))
+
+(unless (package-installed-p 'nasm-mode)
+  (package-install 'nasm-mode))
+
+(unless (package-installed-p 'haskell-mode)
+  (package-install 'haskell-mode))
+
+(unless (package-installed-p 'erlang)
+  (package-install 'erlang))
+
+(unless (package-installed-p 'fsharp-mode)
+  (package-install 'fsharp-mode))
+
+(unless (package-installed-p 'elixir-mode)
+  (package-install 'elixir-mode))
+
+(unless (package-installed-p 'elm-mode)
+  (package-install 'elm-mode))
+
+(unless (package-installed-p 'alchemist)
+  (package-install 'alchemist))
+
+(unless (package-installed-p 'flycheck)
+  (package-install 'flycheck))
+
+(unless (package-installed-p 'neotree)
+  (package-install 'neotree))
+
+(unless (package-installed-p 'auto-complete)
+  (package-install 'auto-complete))
+
+(unless (package-installed-p 'helm)
+  (package-install 'helm))
+
+(unless (package-installed-p 'magit)
+  (package-install 'magit))
+
+(unless (package-installed-p 'ace-jump-mode)
+  (package-install 'ace-jump-mode))
+
+(unless (package-installed-p 'powerline)
+  (package-install 'powerline))
+
+(unless (package-installed-p 'transpose-frame)
+  (package-install 'transpose-frame))
+
+(unless (package-installed-p 'rainbow-delimiters)
+  (package-install 'rainbow-delimiters))
+
+(unless (package-installed-p 'smartparens)
+  (package-install 'smartparens))
+
+
+;; ----------------------- CONFIG ------------------------
 
 ;; lines in every file
 
@@ -62,7 +127,9 @@
 ;; haskell-mode
 ;; erlang-mode
 ;; fsharp-mode
+;; elixir-mode
 ;; elm-mode
+;; alchemist - elixir tooling integratio
 ;; flycheck - syntax checking
 ;; neotree - file explorer
 ;; auto-complete - code completion
@@ -71,6 +138,8 @@
 ;; ace-jump-mode - jump to letter 
 ;; powerline - fancy status bar
 ;; transpose-frame - vertical windows to horizontal
+;; rainbow-delimiters - color delimiters like parenthesis
+;; smartparens - smart parenthesis completion
 
 ;; Config
 
@@ -90,11 +159,24 @@
 (add-to-list 'ac-modes 'haskell-mode)
 (add-to-list 'ac-modes 'erlang-mode)
 (add-to-list 'ac-modes 'elm-mode)
+(add-to-list 'ac-modes 'elixir-mode)
+
 
 ;; enable powerline
 
 (require 'powerline)
 (powerline-default-theme)
+
+;; default smartparens-mode config
+
+(require 'smartparens)
+(smartparens-global-mode t)
+(require 'smartparens-config)
+
+;; rainbow delimiters in modes
+
+(require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;; C-c SPC for ace-jump-mode
 
