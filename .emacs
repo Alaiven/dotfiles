@@ -11,14 +11,16 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#2b2b2b" "#da4939" "#a5c261" "#ffc66d" "#6d9cbe" "#b6b3eb" "#6d9cbe" "#e6e1dc"])
  '(ansi-term-color-vector
    [unspecified "#2b2b2b" "#da4939" "#a5c261" "#ffc66d" "#6d9cbe" "#b6b3eb" "#6d9cbe" "#e6e1dc"])
- '(custom-enabled-themes (quote (base16-solarized-light)))
+ '(custom-enabled-themes (quote (gotham)))
  '(custom-safe-themes
    (quote
-    ("232f715279fc131ed4facf6a517b84d23dca145fcc0e09c5e0f90eb534e1680f" "6bb466c89b7e3eedc1f19f5a0cfa53be9baf6077f4d4a6f9b5d087f0231de9c8" "58c6711a3b568437bab07a30385d34aacf64156cc5137ea20e799984f4227265" "a164837cd2821475e1099911f356ed0d7bd730f13fa36907895f96a719e5ac3e" "066d4710e40eeb85aa7c72afa6c23d09dee4795bf4e450d4869324e917b5f64d" "44eec3c3e6e673c0d41b523a67b64c43b6e38f8879a7969f306604dcf908832c" "cedd3b4295ac0a41ef48376e16b4745c25fa8e7b4f706173083f16d5792bb379" "7c1e99f9d46c397b3fd08c7fdd44fe47c4778ab69cc22c344f404204eb471baa" "d69a0f6d860eeff5ca5f229d0373690782a99aee2410a3eed8a31332a7101f1e" "03e3e79fb2b344e41a7df897818b7969ca51a15a67dc0c30ebbdeb9ea2cd4492" "e254f8e18ba82e55572c5e18f3ac9c2bd6728a7e500f6cc216e0c6f6f8ea7003" "0ae52e74c576120c6863403922ee00340a3bf3051615674c4b937f9c99b24535" "aed73c6d0afcf2232bb25ed2d872c7a1c4f1bda6759f84afc24de6a1aec93da8" default)))
+    ("b110da1a5934e91717b5c490709aba3c60eb4595194bbf9fdcbb97d247c70cfa" "232f715279fc131ed4facf6a517b84d23dca145fcc0e09c5e0f90eb534e1680f" "6bb466c89b7e3eedc1f19f5a0cfa53be9baf6077f4d4a6f9b5d087f0231de9c8" "58c6711a3b568437bab07a30385d34aacf64156cc5137ea20e799984f4227265" "a164837cd2821475e1099911f356ed0d7bd730f13fa36907895f96a719e5ac3e" "066d4710e40eeb85aa7c72afa6c23d09dee4795bf4e450d4869324e917b5f64d" "44eec3c3e6e673c0d41b523a67b64c43b6e38f8879a7969f306604dcf908832c" "cedd3b4295ac0a41ef48376e16b4745c25fa8e7b4f706173083f16d5792bb379" "7c1e99f9d46c397b3fd08c7fdd44fe47c4778ab69cc22c344f404204eb471baa" "d69a0f6d860eeff5ca5f229d0373690782a99aee2410a3eed8a31332a7101f1e" "03e3e79fb2b344e41a7df897818b7969ca51a15a67dc0c30ebbdeb9ea2cd4492" "e254f8e18ba82e55572c5e18f3ac9c2bd6728a7e500f6cc216e0c6f6f8ea7003" "0ae52e74c576120c6863403922ee00340a3bf3051615674c4b937f9c99b24535" "aed73c6d0afcf2232bb25ed2d872c7a1c4f1bda6759f84afc24de6a1aec93da8" default)))
  '(fci-rule-character-color "#452E2E")
  '(fci-rule-color "#452E2E")
  '(neo-theme (quote ascii))
@@ -47,22 +49,56 @@
 ;;        -  Badwolf
 ;;        -  Birds of Paradise
 ;; dark   -  Graham
-;; blue   -  Tronesque
+;; blue   -  TronesqueIsExist
 ;;        -  Deep Thought
 
 
 ;; Installed Plugins
+
 ;; js2-mode
 ;; web-mode
-;; flycheck
-;; neotree
 ;; json-mode
-;; auto-complete
 ;; nasm-mode
 ;; haskell-mode
+;; erlang-mode
 ;; fsharp-mode
-;; help
-;; magit
+;; elm-mode
+;; flycheck - syntax checking
+;; neotree - file explorer
+;; auto-complete - code completion
+;; helm - new M-x menu
+;; magit - git 
+;; ace-jump-mode - jump to letter 
+;; powerline - fancy status bar
+;; transpose-frame - vertical windows to horizontal
+
+;; Config
+
+;; auto-complete on startup
+
+(require 'auto-complete)
+(global-auto-complete-mode nil)
+(setq ac-ignore-case nil)
+
+;; auto-complete for modes
+
+(add-to-list 'ac-modes 'org-mode)
+(add-to-list 'ac-modes 'js2-mode)
+(add-to-list 'ac-modes 'web-mode)
+(add-to-list 'ac-modes 'json-mode)
+(add-to-list 'ac-modes 'nasm-mode)
+(add-to-list 'ac-modes 'haskell-mode)
+(add-to-list 'ac-modes 'erlang-mode)
+(add-to-list 'ac-modes 'elm-mode)
+
+;; enable powerline
+
+(require 'powerline)
+(powerline-default-theme)
+
+;; C-c SPC for ace-jump-mode
+
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 ;; magit C-x g for git status
 
@@ -155,15 +191,6 @@
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
-;; auto-complete on startup
-
-(require 'auto-complete)
-(defun auto-complete-mode-maybe ()
-  (unless (minibufferp (current-buffer))
-    (auto-complete-mode 1)))
-
-(global-auto-complete-mode t)
-
 ;; use web-mode for .jsx files
 
 (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
@@ -172,6 +199,10 @@
 
 (require 'flycheck)
 (add-hook 'after-init-hook 'global-flycheck-mode)
+
+;; disable flycheck on .emacs
+
+(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
 
 ;; c++11 on flycheck
 
@@ -199,6 +230,13 @@
     (let ((web-mode-enable-part-face nil))
       ad-do-it)
     ad-do-it))
+
+;; F# C-SPC intellisense
+
+(require 'fsharp-mode)
+(add-hook 'fsharp-mode-hook
+ (lambda ()
+   (define-key fsharp-mode-map (kbd "C-SPC") 'fsharp-ac/complete-at-point)))
 
 
 
