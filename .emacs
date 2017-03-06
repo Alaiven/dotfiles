@@ -17,10 +17,10 @@
    ["#2b2b2b" "#da4939" "#a5c261" "#ffc66d" "#6d9cbe" "#b6b3eb" "#6d9cbe" "#e6e1dc"])
  '(ansi-term-color-vector
    [unspecified "#2b2b2b" "#da4939" "#a5c261" "#ffc66d" "#6d9cbe" "#b6b3eb" "#6d9cbe" "#e6e1dc"])
- '(custom-enabled-themes (quote (gotham)))
+ '(custom-enabled-themes (quote (gruvbox)))
  '(custom-safe-themes
    (quote
-    ("b110da1a5934e91717b5c490709aba3c60eb4595194bbf9fdcbb97d247c70cfa" "232f715279fc131ed4facf6a517b84d23dca145fcc0e09c5e0f90eb534e1680f" "6bb466c89b7e3eedc1f19f5a0cfa53be9baf6077f4d4a6f9b5d087f0231de9c8" "58c6711a3b568437bab07a30385d34aacf64156cc5137ea20e799984f4227265" "a164837cd2821475e1099911f356ed0d7bd730f13fa36907895f96a719e5ac3e" "066d4710e40eeb85aa7c72afa6c23d09dee4795bf4e450d4869324e917b5f64d" "44eec3c3e6e673c0d41b523a67b64c43b6e38f8879a7969f306604dcf908832c" "cedd3b4295ac0a41ef48376e16b4745c25fa8e7b4f706173083f16d5792bb379" "7c1e99f9d46c397b3fd08c7fdd44fe47c4778ab69cc22c344f404204eb471baa" "d69a0f6d860eeff5ca5f229d0373690782a99aee2410a3eed8a31332a7101f1e" "03e3e79fb2b344e41a7df897818b7969ca51a15a67dc0c30ebbdeb9ea2cd4492" "e254f8e18ba82e55572c5e18f3ac9c2bd6728a7e500f6cc216e0c6f6f8ea7003" "0ae52e74c576120c6863403922ee00340a3bf3051615674c4b937f9c99b24535" "aed73c6d0afcf2232bb25ed2d872c7a1c4f1bda6759f84afc24de6a1aec93da8" default)))
+    ("96998f6f11ef9f551b427b8853d947a7857ea5a578c75aa9c4e7c73fe04d10b4" "9b59e147dbbde5e638ea1cde5ec0a358d5f269d27bd2b893a0947c4a867e14c1" "b1bcb837df0455af8e91114b7a3bddfa084cde32ceb16b1b468d5e5e8605a835" "a922c743710bb5d7c14995345549141f01211ff5089057dc718a5a33104c3fd1" "e8e744a1b0726814ac3ab86ad5ccdf658b9ff1c5a63c4dc23841007874044d4a" "b110da1a5934e91717b5c490709aba3c60eb4595194bbf9fdcbb97d247c70cfa" "232f715279fc131ed4facf6a517b84d23dca145fcc0e09c5e0f90eb534e1680f" "6bb466c89b7e3eedc1f19f5a0cfa53be9baf6077f4d4a6f9b5d087f0231de9c8" "58c6711a3b568437bab07a30385d34aacf64156cc5137ea20e799984f4227265" "a164837cd2821475e1099911f356ed0d7bd730f13fa36907895f96a719e5ac3e" "066d4710e40eeb85aa7c72afa6c23d09dee4795bf4e450d4869324e917b5f64d" "44eec3c3e6e673c0d41b523a67b64c43b6e38f8879a7969f306604dcf908832c" "cedd3b4295ac0a41ef48376e16b4745c25fa8e7b4f706173083f16d5792bb379" "7c1e99f9d46c397b3fd08c7fdd44fe47c4778ab69cc22c344f404204eb471baa" "d69a0f6d860eeff5ca5f229d0373690782a99aee2410a3eed8a31332a7101f1e" "03e3e79fb2b344e41a7df897818b7969ca51a15a67dc0c30ebbdeb9ea2cd4492" "e254f8e18ba82e55572c5e18f3ac9c2bd6728a7e500f6cc216e0c6f6f8ea7003" "0ae52e74c576120c6863403922ee00340a3bf3051615674c4b937f9c99b24535" "aed73c6d0afcf2232bb25ed2d872c7a1c4f1bda6759f84afc24de6a1aec93da8" default)))
  '(fci-rule-character-color "#452E2E")
  '(fci-rule-color "#452E2E")
  '(neo-theme (quote ascii))
@@ -143,6 +143,10 @@
 
 ;; Config
 
+;; save session
+
+(desktop-save-mode 1)
+
 ;; auto-complete on startup
 
 (require 'auto-complete)
@@ -172,6 +176,22 @@
 (require 'smartparens)
 (smartparens-global-mode t)
 (require 'smartparens-config)
+
+;; smartparens addon for exlixir
+
+(sp-with-modes '(elixir-mode)
+  (sp-local-pair "fn" "end"
+         :when '(("SPC" "RET"))
+         :actions '(insert navigate))
+  (sp-local-pair "do" "end"
+         :when '(("SPC" "RET"))
+         :post-handlers '(sp-ruby-def-post-handler)
+         :actions '(insert navigate)))
+
+;; company and alchemist on elixir mode
+
+(add-hook 'elixir-mode-hook 'company-mode)
+(add-hook 'elixir-mode-hook 'alchemist-mode)
 
 ;; rainbow delimiters in modes
 
