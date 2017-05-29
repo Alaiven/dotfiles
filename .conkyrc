@@ -1,0 +1,57 @@
+conky.config = {
+   alignment = "top_right",
+   update_interval = 1,
+   double_buffer=true,
+   use_xft = true,
+   font = 'Inconsolata:bold:size=10',
+   own_window = true,
+   own_window_type = 'normal',
+   own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+   own_window_transparent = false,
+   own_window_argb_visual = true,
+   own_window_argb_value = 120,
+   own_window_colour = '000000',
+   color0 = "FFFFFF",		-- DEFAULT
+   color1 = "FF3636",		-- RED
+   color2 = "FFC336",		-- ORANGE
+   color3 = "61FF36"     	-- GREEN
+}
+
+
+
+conky.text = [[
+${color0}\
+CPU: \
+${if_match ${cpu cpu0} <= 33}${color3}${endif}\
+${if_match ${cpu cpu0} > 33}${color2}${endif}\
+${if_match ${cpu cpu0} > 66}${color3}${endif}\
+${if_match ${cpu cpu0} < 10}0${endif}\
+${cpu cpu0}% \
+${if_match ${ibm_temps 0} <= 45}${color3}${endif}\
+${if_match ${ibm_temps 0} > 45}${color2}${endif}\
+${if_match ${ibm_temps 0} > 70}${color1}${endif}\
+${ibm_temps 0}°C \
+${color0}| \
+MEM: \
+${if_match $memperc <= 33}${color3}${endif}\
+${if_match $memperc > 33}${color2}${endif}\
+${if_match $memperc > 66}${color1}${endif}\
+${if_match $memperc < 10}0${endif}\
+$memperc% \
+${color0}\
+$memfree \
+${color0}| \
+BAT: \
+${if_match $battery_percent <= 20}${color1}${endif}\
+${if_match $battery_percent > 20}${color2}${endif}\
+${if_match $battery_percent > 60}${color3}${endif}\
+${if_match $battery_percent < 10}0${endif}\
+$battery_percent% \
+${color0}| \
+UPTIME: \
+$uptime | \
+${color0}\
+${time %d.%m %H:%M} \
+]]
+
+
