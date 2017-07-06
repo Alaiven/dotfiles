@@ -108,6 +108,18 @@
 
 (global-linum-mode 1)
 
+;; save session
+
+(desktop-save-mode 1)
+
+;; no scrollbars
+
+(scroll-bar-mode -1)
+
+;; start maximized
+
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
 ;; Interesting themes from www.emacsthemes.com
 ;;
 ;; brown  -  Gruvbox
@@ -141,11 +153,7 @@
 ;; rainbow-delimiters - color delimiters like parenthesis
 ;; smartparens - smart parenthesis completion
 
-;; Config
-
-;; save session
-
-(desktop-save-mode 1)
+;; Modes config
 
 ;; auto-complete on startup
 
@@ -165,6 +173,10 @@
 (add-to-list 'ac-modes 'elm-mode)
 (add-to-list 'ac-modes 'elixir-mode)
 
+;; company and alchemist on elixir mode
+
+(add-hook 'elixir-mode-hook 'company-mode)
+(add-hook 'elixir-mode-hook 'alchemist-mode)
 
 ;; enable powerline
 
@@ -187,11 +199,6 @@
          :when '(("SPC" "RET"))
          :post-handlers '(sp-ruby-def-post-handler)
          :actions '(insert navigate)))
-
-;; company and alchemist on elixir mode
-
-(add-hook 'elixir-mode-hook 'company-mode)
-(add-hook 'elixir-mode-hook 'alchemist-mode)
 
 ;; rainbow delimiters in modes
 
@@ -276,14 +283,6 @@
 
 (setq neo-smart-open t)
 
-;; no scrollbars
-
-(scroll-bar-mode -1)
-
-;; start maximized
-
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
-
 ;; switch buffers with shift + arrow
 
 (when (fboundp 'windmove-default-keybindings)
@@ -340,7 +339,6 @@
  (lambda ()
    (define-key fsharp-mode-map (kbd "C-SPC") 'fsharp-ac/complete-at-point)))
 
+;; bison-mode for .l files
 
-
-
-
+(add-to-list 'auto-mode-alist '("\\.l\\'" . c-mode))
