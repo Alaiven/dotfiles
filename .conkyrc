@@ -24,7 +24,7 @@ ${color0}\
 CPU: \
 ${if_match ${cpu cpu0} <= 33}${color3}${endif}\
 ${if_match ${cpu cpu0} > 33}${color2}${endif}\
-${if_match ${cpu cpu0} > 66}${color3}${endif}\
+${if_match ${cpu cpu0} > 66}${color1}${endif}\
 ${if_match ${cpu cpu0} < 10}0${endif}\
 ${cpu cpu0}% \
 ${if_match ${ibm_temps 0} <= 45}${color3}${endif}\
@@ -48,9 +48,6 @@ ${if_match $battery_percent > 60}${color3}${endif}\
 ${if_match $battery_percent < 10}0${endif}\
 $battery_percent% \
 ${color0}| \
-UPTIME: \
-$uptime | \
-${color0}\
 ${time %d.%m %H:%M} \
 ]]
 
