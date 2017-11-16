@@ -141,9 +141,6 @@
 (unless (package-installed-p 'flycheck)
   (package-install 'flycheck))
 
-(unless (package-installed-p 'neotree)
-  (package-install 'neotree))
-
 (unless (package-installed-p 'auto-complete)
   (package-install 'auto-complete))
 
@@ -180,6 +177,14 @@
 (unless (package-installed-p' 'flycheck-color-mode-line)
   (package-install 'flycheck-color-mode-line))
 
+(unless (package-installed-p' 'dired+)
+  (package-install 'dired+))
+
+(unless (package-installed-p' 'dired-subtree)
+  (package-install 'dired-subtree))
+
+(unless (package-installed-p' 'dired-toggle)
+  (package-install 'dired-toggle))
 
 ;; ----------------------- CONFIG ------------------------
 
@@ -225,7 +230,6 @@
 ;; tide - typescript support
 ;; alchemist - elixir tooling integration
 ;; flycheck - syntax checking
-;; neotree - file explorer
 ;; auto-complete - code completion
 ;; helm - new M-x menu
 ;; magit - git 
@@ -235,6 +239,9 @@
 ;; rainbow-delimiters - color delimiters like parenthesis
 ;; smartparens - smart parenthesis completion
 ;; flycheck-color-mode-line - flycheck colors mode line
+;; dired+ - catalog tree
+;; dired-subtree - look for catalogs with <TAB>
+;; dired-toggle - have dired as a toggle mode
 
 ;; Modes config
 
@@ -358,15 +365,6 @@
 	    )
 	  )
 
-;; catalog tree
-
-(require 'neotree)
-  (global-set-key [f5] 'neotree-toggle)
-
-;;(neotree-show)
-
-(setq neo-smart-open t)
-
 ;; switch buffers with shift + arrow
 
 (when (fboundp 'windmove-default-keybindings)
@@ -471,3 +469,36 @@
 ;; add ng2-mode  to flycheck
 
 (flycheck-add-mode 'typescript-tslint 'ng2-ts-mode)
+
+;; C-x t for transpose-frame
+
+(global-set-key (kbd "C-x t") 'transpose-frame)
+
+;; Use Dired+ instead of normal
+
+(require 'dired+)
+
+;; Go to sub-folders in Dired using <TAB>
+
+(require 'dired-subtree)
+
+(eval-after-load "dired"
+  '(define-key dired-mode-map (kbd "TAB") 'dired-subtree-toggle))
+
+;; Shrink windows with S+C+arrows
+
+(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-<down>") 'shrink-window)
+(global-set-key (kbd "S-C-<up>") 'enlarge-window)
+
+;; Dired-toggle
+
+(global-set-key (kbd "<f5>") 'dired-toggle)
+
+(setq dired-toggle-window-side 'right)
+(setq dired-toggle-window-size 35)
+	  
+
+
+
