@@ -1,4 +1,7 @@
 
+
+
+
 (require 'package) ;; You might already have this line
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
@@ -67,7 +70,7 @@
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (pdf-tools latex-preview-pane auctex treemacs-projectile treemacs project-explorer fiplr projectile vimish-fold zoom sublimity kaolin-themes zerodark-theme zenburn-theme evil company-jedi darktooth-theme py-autopep8 material-theme elpy jedi web-mode transpose-frame tide solarized-theme smartparens rainbow-delimiters powerline ng2-mode neotree nasm-mode magit json-mode js2-mode helm haskell-mode gruvbox-theme fsharp-mode flycheck-color-mode-line erlang elm-mode dired-toggle dired-subtree dired+ auto-complete alchemist ace-jump-mode)))
+    (symon dimmer focus beacon r alchemist-mode dashboard use-package pdf-tools latex-preview-pane auctex treemacs-projectile treemacs project-explorer fiplr projectile vimish-fold zoom sublimity kaolin-themes zerodark-theme zenburn-theme evil company-jedi darktooth-theme py-autopep8 material-theme elpy jedi web-mode transpose-frame tide solarized-theme smartparens rainbow-delimiters powerline ng2-mode neotree nasm-mode magit json-mode js2-mode helm haskell-mode gruvbox-theme fsharp-mode flycheck-color-mode-line erlang elm-mode dired-toggle dired-subtree dired+ auto-complete alchemist ace-jump-mode)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
@@ -114,133 +117,17 @@
 
 ;;------------------------- MINE -------------------------
 
-;;---------------------- INSTALLERS ----------------------
+;; use-package initial config
 
-(unless (package-installed-p 'js2-mode)
-  (package-install 'js2-mode))
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
 
-(unless (package-installed-p 'web-mode)
-  (package-install 'web-mode))
-
-(unless (package-installed-p 'json-mode)
-  (package-install 'json-mode))
-
-(unless (package-installed-p 'nasm-mode)
-  (package-install 'nasm-mode))
-
-(unless (package-installed-p 'haskell-mode)
-  (package-install 'haskell-mode))
-
-(unless (package-installed-p 'erlang)
-  (package-install 'erlang))
-
-(unless (package-installed-p 'fsharp-mode)
-  (package-install 'fsharp-mode))
-
-(unless (package-installed-p 'elixir-mode)
-  (package-install 'elixir-mode))
-
-(unless (package-installed-p 'elm-mode)
-  (package-install 'elm-mode))
-
-(unless (package-installed-p 'alchemist)
-  (package-install 'alchemist))
-
-(unless (package-installed-p 'flycheck)
-  (package-install 'flycheck))
-
-(unless (package-installed-p 'company)
-  (package-install 'company))
-
-(unless (package-installed-p 'helm)
-  (package-install 'helm))
-
-(unless (package-installed-p 'magit)
-  (package-install 'magit))
-
-(unless (package-installed-p 'ace-jump-mode)
-  (package-install 'ace-jump-mode))
-
-(unless (package-installed-p 'powerline)
-  (package-install 'powerline))
-
-(unless (package-installed-p 'transpose-frame)
-  (package-install 'transpose-frame))
-
-(unless (package-installed-p 'rainbow-delimiters)
-  (package-install 'rainbow-delimiters))
-
-(unless (package-installed-p 'smartparens)
-  (package-install 'smartparens))
-
-(unless (package-installed-p 'typescript-mode)
-  (package-install 'typescript-mode))
-
-(unless (package-installed-p 'ng2-mode)
-  (package-install 'ng2-mode))
-
-(unless (package-installed-p 'tide)
-  (package-install 'tide))
-
-(unless (package-installed-p' 'flycheck-color-mode-line)
-  (package-install 'flycheck-color-mode-line))
-
-(unless (package-installed-p' 'dired+)
-  (package-install 'dired+))
-
-(unless (package-installed-p' 'dired-subtree)
-  (package-install 'dired-subtree))
-
-(unless (package-installed-p' 'dired-toggle)
-  (package-install 'dired-toggle))
-
-(unless (package-installed-p' 'company-jedi)
-  (package-install 'company-jedi))
-
-(unless (package-installed-p' 'elpy)
-  (package-install 'elpy))
-
-(unless (package-installed-p' 'py-autopep8)
-  (package-install 'py-autopep8))
-
-(unless (package-installed-p' 'sublimity)
-  (package-install 'sublimity))
-
-(unless (package-installed-p' 'vimish-fold)
-  (package-install 'vimish-fold))
-
-(unless (package-installed-p' 'projectile)
-  (package-install 'projectile))
-
-(unless (package-installed-p' 'fiplr)
-  (package-install 'fiplr))
-
-(unless (package-installed-p' 'treemacs)
-  (package-install 'treemacs))
-
-(unless (package-installed-p' 'treemacs-projectile)
-  (package-install 'treemacs-projectile))
-
-
+(eval-when-compile
+  ;; Following line is not needed if use-package.el is in ~/.emacs.d
+  ;;(Add-list 'load-path "<path where use-package is installed>")
+  (require 'use-package))
 
 ;; ----------------------- CONFIG ------------------------
-
-;; line numbers
-
-(global-linum-mode 1)
-
-;; save session
-
-(desktop-save-mode 1)
-
-;; no scrollbars
-
-(scroll-bar-mode -1)
-(horizontal-scroll-bar-mode -1)
-
-;; start maximized
-
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; Interesting themes from www.emacsthemes.com
 ;;
@@ -264,6 +151,7 @@
 ;; erlang-mode
 ;; fsharp-mode
 ;; elixir-mode
+
 ;; elm-mode
 ;; typescript-mode
 ;; ng2-mode - Angular 4 support
@@ -288,189 +176,308 @@
 ;; dired+ - catalog tree
 ;; dired-subtree - look for catalogs with <TAB>
 ;; dired-toggle - have dired as a toggle mode
-;; sublimity - smooth-scrolling
 ;; vimish-fold - regions
 ;; projectile - project integration
 ;; Fiplr - Find in Project for Emacs
 ;; Treemacs - tree directory management with treemacs-projectile
 
-;; Modes config
+;; MACOS
 
-;; company-mode on startup
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+(setq exec-path (append exec-path '("/usr/local/bin")))
 
-(add-hook 'after-init-hook 'global-company-mode)
+;; ================================= EDITOR =================================
 
-;; alchemist on elixir mode
+;; line numbers
 
-(add-hook 'elixir-mode-hook 'alchemist-mode)
+(global-display-line-numbers-mode)
 
-;; enable powerline
+;; no scrollbars
 
-(require 'powerline)
-(powerline-default-theme)
+(scroll-bar-mode -1)
+(horizontal-scroll-bar-mode -1)
 
-;; default smartparens-mode config
+;; start maximized
 
-(require 'smartparens)
-(smartparens-global-mode t)
-(require 'smartparens-config)
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-;; smartparens addon for elixir
+;; C-x C-b for buffer window
 
-(sp-with-modes '(elixir-mode)
-  (sp-local-pair "fn" "end"
-         :when '(("SPC" "RET"))
-         :actions '(insert navigate))
-  (sp-local-pair "do" "end"
-         :when '(("SPC" "RET"))
-         :post-handlers '(sp-ruby-def-post-handler)
-         :actions '(insert navigate)))
-
-;; rainbow delimiters in modes
-
-(require 'rainbow-delimiters)
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-
-;; C-c SPC for ace-jump-mode
-
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
-
-;; magit C-x g for git status
-
-(global-set-key (kbd "C-x g") 'magit-status)
-
-;; magit C-x M-g for git popup
-
-(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
-
-;; helm config, M-x for helm-M-x
-
-(require 'helm-config)
-
-(global-set-key (kbd "M-x") 'helm-M-x)
-
-;; enable nasm-mode
-
-(require 'nasm-mode)
-(add-to-list 'auto-mode-alist '("\\.nasm\\'" . nasm-mode))
-(add-to-list 'auto-mode-alist '("\\.asm\\'" . nasm-mode))
-
-;; C-c C-c for compiling nasm
-
-(eval-after-load 'nasm-mode 
-  '(define-key nasm-mode-map (kbd "C-c C-c") 'compile))
-
-;; Change compilation command for nasm
-
-(add-hook 'nasm-mode-hook
-          (lambda ()
-            (set (make-local-variable 'compile-command)
-                 (concat
-		  "nasm "
-		  (file-name-sans-extension buffer-file-name)
-		  ".asm -felf64 -o "
-		  (file-name-sans-extension buffer-file-name)
-		  ".o && ld -m elf_x86_64 "
-		  (file-name-sans-extension buffer-file-name)
-		  ".o -o "
-		  (file-name-sans-extension buffer-file-name))
-		 )
-	    )
-	  )
-
-;; C-c C-c for compiling haskell
-
-(require 'haskell-mode)
-;(eval-after-load "haskell-mode"
-;    '(define-key haskell-mode-map (kbd "C-c C-c") 'haskell-compile))
-
-(eval-after-load "haskell-mode"
-  '(define-key haskell-mode-map (kbd "C-c C-c") 'compile))
-
-(add-hook 'haskell-mode-hook
-          (lambda ()
-            (set (make-local-variable 'compile-command)
-                 (concat
-		  "ghc "
-		  (file-name-sans-extension buffer-file-name)
-		  ".hs -o "
-		  (file-name-sans-extension buffer-file-name)
-		  )
-		 )
-	    )
-	  )
+(global-set-key (kbd "C-x C-b") 'bs-show)
 
 ;; switch buffers with shift + arrow
 
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
-;; js2-mode as default for javascript
+;; Shrink windows with S+C+arrows
 
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-<down>") 'shrink-window)
+(global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
-;; use web-mode for .jsx files
+;; beacon - cursor highlight
 
-(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+(use-package beacon
+  :ensure t
+  :init
+  (beacon-mode 1))
+
+;; symon - system diag
+
+(use-package symon
+  :ensure t
+  :init
+  (symon-mode)
+  (setq symon-sparkline-type 'boxed))
+
+;; enable powerline
+
+(use-package powerline
+  :ensure t
+  :config
+  (powerline-default-theme))
+
+;; Ace jump
+
+(use-package ace-jump-mode
+  :ensure t
+  :commands ace-jump-mode
+  :init
+  (bind-key "C-." 'ace-jump-mode))
+
+;; helm config, M-x for helm-M-x
+
+(use-package helm
+  :ensure t
+  :init
+  (require 'helm-config)
+  (bind-key "M-x" 'helm-M-x))
+
+;; C-x t for transpose-frame
+
+(use-package transpose-frame
+  :ensure t
+  :init
+  (global-set-key (kbd "C-x t") 'transpose-frame))
+
+;; Dashboard
+
+(use-package dashboard
+  :ensure t
+  :init
+  (setq dashboard-items '((recents  . 5)))
+  (setq dashboard-startup-banner 'logo)
+  (add-hook 'dashboard-mode-hook (display-line-numbers-mode -1))
+  :config
+  (dashboard-setup-startup-hook))
+
+;; ================================== MISC ==================================
+
+;; company-mode on startup
+
+(use-package company
+  :ensure t
+  :init
+  (add-hook 'after-init-hook 'global-company-mode)
+  ;; aligns annotation to the right hand side
+  (setq company-tooltip-align-annotations t))
+
+;; vimish-fold
+
+(use-package vimish-fold
+  :ensure t)
+
+;; default smartparens-mode config
+
+(use-package smartparens
+  :ensure t
+  :init
+  (smartparens-global-mode t)
+  (require 'smartparens-config))
+
+;; rainbow delimiters in modes
+
+(use-package rainbow-delimiters
+  :ensure t
+  :init
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
+;; magit
+
+(use-package magit
+  :ensure t
+  :init
+  ;; magit C-x g for git status
+  (global-set-key (kbd "C-x g") 'magit-status)
+  ;; magit C-x M-g for git popup
+  (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup))
 
 ;; turn on flychecking globally
 
-(require 'flycheck)
-(add-hook 'after-init-hook 'global-flycheck-mode)
+(use-package flycheck
+  :ensure t
+  :init
+  (add-hook 'after-init-hook 'global-flycheck-mode)
+  (setq-default flycheck-temp-prefix ".flycheck")
+  ;; disable flycheck on .emacs
+  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
 
-;; disable flycheck on .emacs
+(use-package flycheck-color-mode-line
+  :ensure t
+  :requires flycheck
+  :init
+  (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
 
-(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+;; Use Dired+ instead of normal
 
-;; c++11 on flycheck
+;;(require 'dired+)
 
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
+;; Go to sub-folders in Dired using <TAB>
 
-;; disable jshint since we prefer eslint checking
+(use-package dired-toggle
+  :ensure t
+  :requires dired
+  :init
+  (setq dired-toggle-window-side 'right)
+  (setq dired-toggle-window-size 35)
+  (bind-key "<f4>" 'dired-toggle))
 
-(setq-default flycheck-disabled-checkers
-  (append flycheck-disabled-checkers
-	  '(javascript-jshint)))
+(use-package dired-subtree
+  :ensure t
+  :requires dired-toggle
+  :commands dired-subtree-toggle
+  :bind (:map dired-mode-map
+  ("TAB" . dired-subtree-toggle)))
 
-;; use eslint with web-mode for jsx files
+;; enable projectile
 
-(flycheck-add-mode 'javascript-eslint 'web-mode)
+(use-package projectile
+  :ensure t
+  :commands projectile-mode
+  :init
+  (projectile-mode +1))
 
-;; customize flycheck temp file prefix
+;; fiplr - shortcut
 
-(setq-default flycheck-temp-prefix ".flycheck")
+(use-package fiplr
+  :ensure t
+  :commands fiplr-find-file
+  :init
+  (bind-key "C-x f" 'fiplr-find-file) 
+  (setq fiplr-ignored-globs '((directories (".git" ".svn" "node_modules"))
+                              (files ("*.jpg" "*.png" "*.zip" "*~"))))
+  (setq fiplr-root-markers '(".git" ".svn" ".projectile")))
 
-;; for better jsx syntax-highlighting in web-mode
-;; - courtesy of Patrick @halbtuerke
+;; Treemacs - settings
 
-(defadvice web-mode-highlight-part (around tweak-jsx activate)
-  (if (equal web-mode-content-type "jsx")
-    (let ((web-mode-enable-part-face nil))
-      ad-do-it)
-    ad-do-it))
+(use-package treemacs
+  :ensure t
+  :init
+  (global-set-key (kbd "<f5>") 'treemacs)
+  (global-set-key (kbd "<f6>") 'treemacs-projectile)
+  (setq treemacs-position 'right)
+  (setq treemacs-no-png-images 1)
+  (setq treemacs-never-persist t)
+  (add-hook 'treemacs-mode-hook 'treemacs-follow-mode))
+;;  (add-hook 'treemacs-mode-hook (display-line-numbers-mode -1))) CAUSES BUG
 
-;; F# C-SPC intellisense
+(use-package treemacs-projectile
+  :ensure t
+  :requires treemacs)
 
-(require 'fsharp-mode)
-(add-hook 'fsharp-mode-hook
- (lambda ()
-   (define-key fsharp-mode-map (kbd "C-SPC") 'fsharp-ac/complete-at-point)))
+;; ================================== NASM ==================================
 
-;; bison-mode for .l files
+;; enable nasm-mode
 
-(add-to-list 'auto-mode-alist '("\\.l\\'" . c-mode))
+(use-package nasm-mode
+  :ensure t
+  :init
+  ;; custom compile
+  (add-hook 'nasm-mode-hook
+            (lambda ()
+              (set (make-local-variable 'compile-command)
+                   (concat
+		    "nasm "
+		    (file-name-sans-extension buffer-file-name)
+		    ".asm -felf64 -o "
+		    (file-name-sans-extension buffer-file-name)
+		    ".o && ld -m elf_x86_64 "
+		    (file-name-sans-extension buffer-file-name)
+		    ".o -o "
+		    (file-name-sans-extension buffer-file-name))
+		   )
+	      )
+	    )
+  ;; bind file hooks
+  (add-to-list 'auto-mode-alist '("\\.nasm\\'" . nasm-mode))
+  (add-to-list 'auto-mode-alist '("\\.asm\\'" . nasm-mode))
+  ;; C-c C-c for compiling
+  (bind-key "C-c C-c" 'compile))
 
-;; prolog-mode for .pl files
+;; ================================ HASKELL =================================
 
-(add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode))
+;; C-c C-c for compiling haskell
 
-;; C-x C-b for buffer window
+(use-package haskell-mode
+  :ensure t
+  :init
+  ;; C-c C-c for compiling
+  (bind-key "C-c C-c" 'compile)
+  ;; Custom compile
+  (add-hook 'haskell-mode-hook
+            (lambda ()
+              (set (make-local-variable 'compile-command)
+                   (concat
+		    "ghc "
+		    (file-name-sans-extension buffer-file-name)
+		    ".hs -o "
+		    (file-name-sans-extension buffer-file-name)
+		    )
+		   )
+	      )
+	    ))
 
-(global-set-key (kbd "C-x C-b") 'bs-show)
+;; ================================ JS/TS/ES ================================
 
-;; enable typescript mode
+(use-package json-mode
+  :ensure t)
 
-(require 'ng2-mode)
+(use-package web-mode
+  :ensure t
+  :init
+  ;; use web-mode for .jsx files
+  (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+  ;; use eslint with web-mode for jsx files
+  (flycheck-add-mode 'javascript-eslint 'web-mode)
+  ;; for better jsx syntax-highlighting in web-mode
+  ;; - courtesy of Patrick @halbtuerke
+  (defadvice web-mode-highlight-part (around tweak-jsx activate)
+    (if (equal web-mode-content-type "jsx")
+	(let ((web-mode-enable-part-face nil))
+	  ad-do-it)
+      ad-do-it)))
+
+(use-package js2-mode
+  :ensure t
+  :requires flycheck
+  :init
+  ;; js2-mode as default for javascript
+  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+  ;; disable jshint since we prefer eslint checking
+  (setq-default flycheck-disabled-checkers
+		(append flycheck-disabled-checkers
+			'(javascript-jshint))))
+
+(use-package typescript-mode
+  :ensure t)
+
+(use-package ng2-mode
+  :ensure t
+  :requires typescript-mode
+  :init
+  (add-hook 'ng2-ts-mode-hook 'typescript-mode))
 
 ;; configure tide
 
@@ -486,115 +493,99 @@
   ;; `M-x package-install [ret] company`
   (company-mode +1))
 
-;; aligns annotation to the right hand side
-(setq company-tooltip-align-annotations t)
+(use-package tide
+  :ensure t
+  :init
+  (add-hook 'before-save-hook 'tide-format-before-save)
+  (add-hook 'typescript-mode-hook #'setup-tide-mode)
+  :config
+  (flycheck-add-mode 'typescript-tslint 'ng2-ts-mode)
+  (flycheck-add-mode 'typescript-tide 'ng2-ts-mode))
 
-;; formats the buffer before saving
-(add-hook 'before-save-hook 'tide-format-before-save)
+;; ============================ OTHER LANGUAGES =============================
 
-(add-hook 'typescript-mode-hook #'setup-tide-mode)
+;; Elm
 
-;; enable flycheck-color-mode-line
+(use-package elm-mode
+  :ensure t)
 
-(require 'flycheck-color-mode-line)
+;; Erlang
 
-(eval-after-load "flycheck"
-  '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
+(use-package erlang
+  :ensure t)
 
-;; add ng2-mode  to flycheck
+;; F#
 
-(flycheck-add-mode 'typescript-tslint 'ng2-ts-mode)
+(use-package fsharp-mode
+  :ensure t
+  :init
+  (bind-key "C-SPC" 'fsharp-ac/complete-at-point))
 
-;; C-x t for transpose-frame
+;; Elixir
 
-(global-set-key (kbd "C-x t") 'transpose-frame)
+(use-package alchemist
+  :ensure t)
 
-;; Use Dired+ instead of normal
+(use-package elixir-mode
+  :ensure t
+  :requires (smartparens alchemist)
+  :init
+  ;; alchemist on elixir mode
+  (add-hook 'elixir-mode-hook 'alchemist-mode)
+  :config
+  (sp-with-modes '(elixir-mode)
+    (sp-local-pair "fn" "end"
+		   :when '(("SPC" "RET"))
+		   :actions '(insert navigate))
+    (sp-local-pair "do" "end"
+		   :when '(("SPC" "RET"))
+		   :post-handlers '(sp-ruby-def-post-handler)
+		   :actions '(insert navigate))))
 
-(require 'dired+)
+;; bison-mode for .l files
 
-;; Go to sub-folders in Dired using <TAB>
+(add-to-list 'auto-mode-alist '("\\.l\\'" . c-mode))
 
-(require 'dired-subtree)
+;; prolog-mode for .pl files
 
-(eval-after-load "dired"
-  '(define-key dired-mode-map (kbd "TAB") 'dired-subtree-toggle))
+(add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode))
 
-;; Shrink windows with S+C+arrows
+;; c++11 on flycheck
 
-(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
-(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
-(global-set-key (kbd "S-C-<down>") 'shrink-window)
-(global-set-key (kbd "S-C-<up>") 'enlarge-window)
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
 
-;; Dired-toggle
-
-(global-set-key (kbd "<f4>") 'dired-toggle)
-
-(setq dired-toggle-window-side 'right)
-(setq dired-toggle-window-size 35)
+;; ================================= PYTHON =================================
 
 ;; Set-up Elpy
 
-(require 'elpy)
+(use-package elpy
+  :ensure t
+  :requires flycheck
+  :init
+  (add-hook 'elpy-mode-hook 'flycheck-mode)
+  (setq elpy-rpc-python-command "python3")
+  :config
+  (elpy-enable)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules)))
 
-(elpy-enable)
+(use-package py-autopep8
+  :ensure t
+  :requires elpy
+  :init
+  (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
 
-(setq elpy-rpc-python-command "python3")
+(use-package jedi
+  :ensure t
+  :init
+  (add-hook 'elpy-mode-hook 'jedi:setup)
+  (setq jedi:complete-on-dot t))
 
-;; elpy with Flycheck
-	  
-(when (require 'flycheck nil t)
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-  (add-hook 'elpy-mode-hook 'flycheck-mode))
-
-;; enable autopep8
-
-(require 'py-autopep8)
-(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
-
-;; enable jedi
-
-(add-hook 'elpy-mode-hook 'jedi:setup)
-(setq jedi:complete-on-dot t)
-
-
-;; enable projectile
-
-(projectile-mode)
-
-;; fiplr - shortcut
-
-(global-set-key (kbd "C-x f") 'fiplr-find-file)
-
-;; fiplr - disable files
-
-(setq fiplr-ignored-globs '((directories (".git" ".svn" "node_modules"))
-                            (files ("*.jpg" "*.png" "*.zip" "*~"))))
-
-(setq fiplr-root-markers '(".git" ".svn" ".projectile"))
-
-;; Treemacs - settings
-
-(global-set-key (kbd "<f5>") 'treemacs-toggle)
-(global-set-key (kbd "<f6>") 'treemacs-projectile-toggle)
-
-(setq treemacs-position 'right)
-(setq treemacs-no-png-images 1)
-(setq treemacs-never-persist t)
-
-(add-hook 'treemacs-mode-hook 'treemacs-follow-mode)
-
-(defun nolinum ()
-  (linum-mode 0)
-)
-(add-hook 'treemacs-mode-hook 'nolinum)
+;; ================================= LaTeX ==================================
 
 ;; spell checking for LaTeX
 
 ;;enable flyspell for text-mode
 (add-hook 'LaTeX-mode-hook #'turn-on-flyspell)
-
 
 ;; flyspell use babel settings in LaTeX
 
@@ -608,5 +599,5 @@
 
 (add-hook 'doc-view-mode-hook 'nolinum)
 
-
+;; ================================= END ====================================
 
