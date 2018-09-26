@@ -1,7 +1,5 @@
 
 
-
-
 (require 'package) ;; You might already have this line
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
@@ -381,7 +379,8 @@
   (setq treemacs-no-png-images 1)
   (setq treemacs-never-persist t)
   (add-hook 'treemacs-mode-hook 'treemacs-follow-mode))
-;;  (add-hook 'treemacs-mode-hook (display-line-numbers-mode -1))) CAUSES BUG
+  ;;:config
+  ;;(add-hook 'treemacs-mode-hook (display-line-numbers-mode -1))) ;; CAUSES BUG
 
 (use-package treemacs-projectile
   :ensure t
@@ -518,8 +517,8 @@
 
 (use-package fsharp-mode
   :ensure t
-  :init
-  (bind-key "C-SPC" 'fsharp-ac/complete-at-point))
+  :bind (:map fsharp-mode-map
+	     ("C-SPC" . fsharp-ac/complete-at-point)))
 
 ;; Elixir
 
