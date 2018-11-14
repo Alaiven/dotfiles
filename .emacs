@@ -192,8 +192,9 @@
 
 ;; no scrollbars
 
-(scroll-bar-mode -1)
-(horizontal-scroll-bar-mode -1)
+(when (display-graphic-p)
+  (scroll-bar-mode -1)
+  (horizontal-scroll-bar-mode -1))
 
 ;; start maximized
 
@@ -218,6 +219,7 @@
 ;; beacon - cursor highlight
 
 (use-package beacon
+  :if window-system
   :ensure t
   :init
   (beacon-mode 1))
@@ -233,6 +235,7 @@
 ;; enable powerline
 
 (use-package powerline
+  :if window-system
   :ensure t
   :config
   (powerline-default-theme))
