@@ -197,7 +197,7 @@
 
 ;; start maximized
 
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; C-x C-b for buffer window
 
@@ -224,11 +224,11 @@
 
 ;; symon - system diag
 
-(use-package symon
-  :ensure t
-  :init
-  (symon-mode)
-  (setq symon-sparkline-type 'boxed))
+;; (use-package symon
+;;   :ensure t
+;;   :init
+;;   (symon-mode)
+;;   (setq symon-sparkline-type 'boxed))
 
 ;; enable powerline
 
@@ -392,6 +392,7 @@
 
 (use-package nasm-mode
   :ensure t
+  :defer t
   :init
   ;; custom compile
   (add-hook 'nasm-mode-hook
@@ -421,6 +422,7 @@
 
 (use-package haskell-mode
   :ensure t
+  :defer t
   :init
   ;; C-c C-c for compiling
   (bind-key "C-c C-c" 'compile)
@@ -441,10 +443,12 @@
 ;; ================================ JS/TS/ES ================================
 
 (use-package json-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package web-mode
   :ensure t
+  :defer t
   :init
   ;; use web-mode for .jsx files
   (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
@@ -460,6 +464,7 @@
 
 (use-package js2-mode
   :ensure t
+  :defer t
   :requires flycheck
   :init
   ;; js2-mode as default for javascript
@@ -470,10 +475,12 @@
 			'(javascript-jshint))))
 
 (use-package typescript-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package ng2-mode
   :ensure t
+  :defer t
   :requires typescript-mode
   :init
   (add-hook 'ng2-ts-mode-hook 'typescript-mode))
@@ -494,6 +501,7 @@
 
 (use-package tide
   :ensure t
+  :defer t
   :init
   (add-hook 'before-save-hook 'tide-format-before-save)
   (add-hook 'typescript-mode-hook #'setup-tide-mode)
@@ -506,27 +514,32 @@
 ;; Elm
 
 (use-package elm-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 ;; Erlang
 
 (use-package erlang
-  :ensure t)
+  :ensure t
+  :defer t)
 
 ;; F#
 
 (use-package fsharp-mode
   :ensure t
+  :defer t
   :bind (:map fsharp-mode-map
 	     ("C-SPC" . fsharp-ac/complete-at-point)))
 
 ;; Elixir
 
 (use-package alchemist
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package elixir-mode
   :ensure t
+  :defer t
   :requires (smartparens alchemist)
   :init
   ;; alchemist on elixir mode
@@ -559,6 +572,7 @@
 
 (use-package elpy
   :ensure t
+  :defer t
   :requires flycheck
   :init
   (add-hook 'elpy-mode-hook 'flycheck-mode)
@@ -569,12 +583,14 @@
 
 (use-package py-autopep8
   :ensure t
+  :defer t
   :requires elpy
   :init
   (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
 
 (use-package jedi
   :ensure t
+  :defer t
   :init
   (add-hook 'elpy-mode-hook 'jedi:setup)
   (setq jedi:complete-on-dot t))
