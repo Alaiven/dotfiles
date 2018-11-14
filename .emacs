@@ -68,7 +68,7 @@
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (symon dimmer focus beacon r alchemist-mode dashboard use-package pdf-tools latex-preview-pane auctex treemacs-projectile treemacs project-explorer fiplr projectile vimish-fold zoom sublimity kaolin-themes zerodark-theme zenburn-theme evil company-jedi darktooth-theme py-autopep8 material-theme elpy jedi web-mode transpose-frame tide solarized-theme smartparens rainbow-delimiters powerline ng2-mode neotree nasm-mode magit json-mode js2-mode helm haskell-mode gruvbox-theme fsharp-mode flycheck-color-mode-line erlang elm-mode dired-toggle dired-subtree dired+ auto-complete alchemist ace-jump-mode)))
+    (symon dimmer focus beacon r alchemist-mode dashboard use-package pdf-tools latex-preview-pane auctex treemacs-projectile treemacs project-explorer fiplr projectile vimish-fold zoom sublimity kaolin-themes zerodark-theme zenburn-theme evil company-jedi darktooth-theme py-autopep8 material-theme elpy jedi web-mode transpose-frame tide solarized-theme smartparens rainbow-delimiters powerline ng2-mode neotree nasm-mode magit json-mode js2-mode helm haskell-mode gruvbox-theme fsharp-mode flycheck-color-mode-line erlang elm-mode dired-toggle dired-subtree dired+ alchemist ace-jump-mode)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
