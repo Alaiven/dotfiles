@@ -594,7 +594,7 @@
   :init
   (add-hook 'python-mode-hook 'py-autopep8-enable-on-save))
 
-(use-package jedi
+(use-package company-jedi
   :ensure t
   :defer t
   :init
