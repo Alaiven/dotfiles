@@ -1,4 +1,3 @@
-
 (require 'package) ;; You might already have this line
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
@@ -11,10 +10,20 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (noctilux)))
+ '(ansi-color-names-vector
+   ["#000000" "#8b0000" "#00ff00" "#ffa500" "#7b68ee" "#dc8cc3" "#93e0e3" "#dcdccc"])
+ '(background-color "#202020")
+ '(background-mode dark)
+ '(cursor-color "#cccccc")
+ '(custom-enabled-themes (quote (dracula)))
  '(custom-safe-themes
    (quote
-    ("8885761700542f5d0ea63436874bf3f9e279211707d4b1ca9ed6f53522f21934" default))))
+    ("7e78a1030293619094ea6ae80a7579a562068087080e01c2b8b503b27900165c" "d2e9c7e31e574bf38f4b0fb927aaff20c1e5f92f72001102758005e53d77b8c9" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" "59e82a683db7129c0142b4b5a35dbbeaf8e01a4b81588f8c163bd255b76f4d21" "8885761700542f5d0ea63436874bf3f9e279211707d4b1ca9ed6f53522f21934" default)))
+ '(fci-rule-color "#383838")
+ '(foreground-color "#cccccc")
+ '(package-selected-packages
+   (quote
+    (solaire-mode dracula-theme cyberpunk-theme noctilux-theme spaceline anzu diminish web-mode vimish-fold use-package treemacs-projectile transpose-frame tide symon sublimity solarized-theme smartparens rainbow-delimiters pyenv-mode py-autopep8 powerline ng2-mode nasm-mode modern-cpp-font-lock material-theme magit json-mode js2-mode jedi helm haskell-mode fsharp-mode focus flycheck-color-mode-line fiplr exec-path-from-shell erlang elpy elm-mode dired-toggle dired-subtree dimmer dashboard company-jedi beacon alchemist ace-popup-menu ace-jump-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -22,7 +31,7 @@
  ;; If there is more than one, they won't work right.
  )
 
-;;------------------------- MINE -------------------------
+;; ================================== MINE ==================================
 
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/")
@@ -41,21 +50,26 @@
   ;;(Add-list 'load-path "<path where use-package is installed>")
   (require 'use-package))
 
-;; ----------------------- CONFIG ------------------------
-
-;; Interesting themes from www.emacsthemes.com
-;;
-;; brown  -  Gruvbox
-;;        -  Badwolf
-;;        -  Birds of Paradise
-;; dark   -  Graham
-;; blue   -  TronesqueIsExist
-;;        -  Deep Thought
-
-
 ;; ================================= EDITOR =================================
 
 (tool-bar-mode -1)
+
+(use-package evil
+  :ensure t
+  :config
+  (evil-mode 1))
+
+(use-package solaire-mode
+  :hook ((change-major-mode after-revert ediff-prepare-buffer) . turn-on-solaire-mode)
+  :config
+  (add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer)
+  (solaire-mode-swap-bg))
+
+(use-package doom-themes
+  :ensure t
+  :init
+  (load-theme 'doom-dracula t)
+  (doom-themes-treemacs-config))
 
 (use-package exec-path-from-shell
   :ensure t
@@ -111,7 +125,6 @@
 
 ;; dashboard - better initial widow (breaks colors in terminal!)
 
-
 (use-package dashboard
   :if window-system
   :ensure t
@@ -139,11 +152,12 @@
   :init
   (require 'spaceline-config)
   :config
-  (spaceline-emacs-theme)
+  (spaceline-spacemacs-theme)
   (spaceline-helm-mode)
+  (spaceline-toggle-evil-state-on)
   (spaceline-toggle-projectile-root-on)
   (setq powerline-height 22)
-  )
+  (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state))
 
 ;; Ace jump
 
@@ -205,10 +219,12 @@
 (use-package magit
   :ensure t
   :init
-  ;; magit C-x g for git status
-  (global-set-key (kbd "C-x g") 'magit-status)
-  ;; magit C-x M-g for git popup
-  (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup))
+  ;; magit <f4> for git status
+  (global-set-key (kbd "<f4>") 'magit-status)
+  ;; magit <C-f4> for git popup
+  (global-set-key (kbd "<C-f4>") 'magit-dispatch-popup)
+  :hook (magit-status-mode . (lambda () (setq mode-line-format nil)))
+)
 
 ;;turn on flychecking globally
 
@@ -226,27 +242,6 @@
   :requires flycheck
   :init
   (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
-
-;; Use Dired+ instead of normal
-
-;;(require 'dired+)
-
-;; Go to sub-folders in Dired using <TAB>
-
-(use-package dired-toggle
-  :ensure t
-  :requires dired
-  :init
-  (setq dired-toggle-window-side 'right)
-  (setq dired-toggle-window-size 35)
-  (bind-key "<f4>" 'dired-toggle))
-
-(use-package dired-subtree
-  :ensure t
-  :requires dired-toggle
-  :commands dired-subtree-toggle
-  :bind (:map dired-mode-map
-  ("TAB" . dired-subtree-toggle)))
 
 ;; enable projectile
 
@@ -425,11 +420,11 @@
 
 ;; F#
 
-(use-package fsharp-mode
-  :ensure t
-  :defer t
-  :bind (:map fsharp-mode-map
-	     ("C-SPC" . fsharp-ac/complete-at-point)))
+;; (use-package fsharp-mode
+;;   :ensure t
+;;   :defer t
+;;   :bind (:map fsharp-mode-map
+;; 	     ("C-SPC" . fsharp-ac/complete-at-point)))
 
 ;; Elixir
 
