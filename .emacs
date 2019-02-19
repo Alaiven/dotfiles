@@ -1,3 +1,6 @@
+
+
+
 (require 'package) ;; You might already have this line
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
@@ -23,7 +26,7 @@
  '(foreground-color "#cccccc")
  '(package-selected-packages
    (quote
-    (solaire-mode dracula-theme cyberpunk-theme noctilux-theme spaceline anzu diminish web-mode vimish-fold use-package treemacs-projectile transpose-frame tide symon sublimity solarized-theme smartparens rainbow-delimiters pyenv-mode py-autopep8 powerline ng2-mode nasm-mode modern-cpp-font-lock material-theme magit json-mode js2-mode jedi helm haskell-mode fsharp-mode focus flycheck-color-mode-line fiplr exec-path-from-shell erlang elpy elm-mode dired-toggle dired-subtree dimmer dashboard company-jedi beacon alchemist ace-popup-menu ace-jump-mode))))
+    (evil-tutor solaire-mode dracula-theme cyberpunk-theme noctilux-theme spaceline anzu diminish web-mode vimish-fold use-package treemacs-projectile transpose-frame tide symon sublimity solarized-theme smartparens rainbow-delimiters pyenv-mode py-autopep8 powerline ng2-mode nasm-mode modern-cpp-font-lock material-theme magit json-mode js2-mode jedi helm haskell-mode fsharp-mode focus flycheck-color-mode-line fiplr exec-path-from-shell erlang elpy elm-mode dired-toggle dired-subtree dimmer dashboard company-jedi beacon alchemist ace-popup-menu ace-jump-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -57,7 +60,13 @@
 (use-package evil
   :ensure t
   :config
-  (evil-mode 1))
+  (evil-mode 1)
+  (evil-set-initial-state 'bs-mode 'emacs)
+  (evil-set-initial-state 'dashboard-mode 'emacs)
+  (evil-set-initial-state 'treemacs-mode 'emacs)
+  (evil-ex-define-cmd "sh" 'split-window-horizontally)
+  (evil-ex-define-cmd "sv" 'split-window-vertically)
+  (define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode))
 
 (use-package solaire-mode
   :hook ((change-major-mode after-revert ediff-prepare-buffer) . turn-on-solaire-mode)
@@ -477,9 +486,9 @@
 
 (use-package py-autopep8
   :ensure t
-  :requires elpy)
-  ;; :init
-  ;; (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+  :requires elpy
+  :init
+  (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
 
 (use-package company-jedi
   :ensure t
