@@ -68,17 +68,25 @@
   (evil-ex-define-cmd "sv" 'split-window-vertically)
   (define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode))
 
-(use-package solaire-mode
-  :hook ((change-major-mode after-revert ediff-prepare-buffer) . turn-on-solaire-mode)
-  :config
-  (add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer)
-  (solaire-mode-swap-bg))
+
+(use-package all-the-icons
+  :if window-system
+  :ensure t)
 
 (use-package doom-themes
   :ensure t
   :init
   (load-theme 'doom-dracula t)
   (doom-themes-treemacs-config))
+
+
+(use-package solaire-mode
+  :ensure t
+  :after doom-themes
+  :hook ((change-major-mode after-revert ediff-prepare-buffer) . turn-on-solaire-mode)
+  :config
+  (add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer)
+  (solaire-mode-swap-bg))
 
 (use-package exec-path-from-shell
   :ensure t
@@ -280,7 +288,7 @@
   (global-set-key (kbd "<f5>") 'treemacs)
   (global-set-key (kbd "<f6>") 'treemacs-projectile)
   (setq treemacs-position 'right)
-  (setq treemacs-no-png-images 1)
+  ;(setq treemacs-no-png-images 1)
   (setq treemacs-never-persist t)
   (add-hook 'treemacs-mode-hook 'treemacs-follow-mode))
   ;;:config
@@ -486,9 +494,9 @@
 
 (use-package py-autopep8
   :ensure t
-  :requires elpy
-  :init
-  (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+  :requires elpy)
+  ;:init
+  ;(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
 
 (use-package company-jedi
   :ensure t
