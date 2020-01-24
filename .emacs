@@ -1,4 +1,4 @@
-
+ 
 
 
 (require 'package) ;; You might already have this line
@@ -14,19 +14,46 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
-   ["#000000" "#8b0000" "#00ff00" "#ffa500" "#7b68ee" "#dc8cc3" "#93e0e3" "#dcdccc"])
+   ["#1E2029" "#8b0000" "#00ff00" "#ffa500" "#7b68ee" "#dc8cc3" "#93e0e3" "#dcdccc"])
  '(background-color "#202020")
  '(background-mode dark)
  '(cursor-color "#cccccc")
  '(custom-enabled-themes (quote (dracula)))
  '(custom-safe-themes
    (quote
-    ("7e78a1030293619094ea6ae80a7579a562068087080e01c2b8b503b27900165c" "d2e9c7e31e574bf38f4b0fb927aaff20c1e5f92f72001102758005e53d77b8c9" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" "59e82a683db7129c0142b4b5a35dbbeaf8e01a4b81588f8c163bd255b76f4d21" "8885761700542f5d0ea63436874bf3f9e279211707d4b1ca9ed6f53522f21934" default)))
+    ("72fda75af7caddec17ba9b49d2f99703c20a5f5f5c4dcec641d34a0b83569e88" "2cdc13ef8c76a22daa0f46370011f54e79bae00d5736340a5ddfe656a767fddf" "be9645aaa8c11f76a10bcf36aaf83f54f4587ced1b9b679b55639c87404e2499" "0809c08440b51a39c77ec5529f89af83ab256a9d48107b088d40098ce322c7d8" "e1ecb0536abec692b5a5e845067d75273fe36f24d01210bf0aa5842f2a7e029f" "7e78a1030293619094ea6ae80a7579a562068087080e01c2b8b503b27900165c" "d2e9c7e31e574bf38f4b0fb927aaff20c1e5f92f72001102758005e53d77b8c9" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" "59e82a683db7129c0142b4b5a35dbbeaf8e01a4b81588f8c163bd255b76f4d21" "8885761700542f5d0ea63436874bf3f9e279211707d4b1ca9ed6f53522f21934" default)))
  '(fci-rule-color "#383838")
  '(foreground-color "#cccccc")
+ '(jdee-db-active-breakpoint-face-colors (cons "#000000" "#80A0C2"))
+ '(jdee-db-requested-breakpoint-face-colors (cons "#000000" "#A2BF8A"))
+ '(jdee-db-spec-breakpoint-face-colors (cons "#000000" "#3f3f3f"))
+ '(objed-cursor-color "#C16069")
  '(package-selected-packages
    (quote
-    (evil-tutor solaire-mode dracula-theme cyberpunk-theme noctilux-theme spaceline anzu diminish web-mode vimish-fold use-package treemacs-projectile transpose-frame tide symon sublimity solarized-theme smartparens rainbow-delimiters pyenv-mode py-autopep8 powerline ng2-mode nasm-mode modern-cpp-font-lock material-theme magit json-mode js2-mode jedi helm haskell-mode fsharp-mode focus flycheck-color-mode-line fiplr exec-path-from-shell erlang elpy elm-mode dired-toggle dired-subtree dimmer dashboard company-jedi beacon alchemist ace-popup-menu ace-jump-mode))))
+    (company-anaconda anaconda-mode treemacs-evil evil-tutor solaire-mode dracula-theme cyberpunk-theme noctilux-theme spaceline anzu diminish web-mode vimish-fold use-package treemacs-projectile transpose-frame tide symon sublimity solarized-theme smartparens rainbow-delimiters pyenv-mode py-autopep8 powerline ng2-mode nasm-mode modern-cpp-font-lock material-theme magit json-mode js2-mode jedi helm haskell-mode fsharp-mode focus flycheck-color-mode-line fiplr exec-path-from-shell erlang elpy elm-mode dired-toggle dired-subtree dimmer dashboard company-jedi beacon alchemist ace-popup-menu ace-jump-mode)))
+ '(pdf-view-midnight-colors (cons "#eceff4" "#323334"))
+ '(vc-annotate-background "#323334")
+ '(vc-annotate-color-map
+   (list
+    (cons 20 "#A2BF8A")
+    (cons 40 "#bac389")
+    (cons 60 "#d3c788")
+    (cons 80 "#ECCC87")
+    (cons 100 "#e3b57e")
+    (cons 120 "#da9e75")
+    (cons 140 "#D2876D")
+    (cons 160 "#c88982")
+    (cons 180 "#be8b98")
+    (cons 200 "#B58DAE")
+    (cons 220 "#b97e97")
+    (cons 240 "#bd6f80")
+    (cons 260 "#C16069")
+    (cons 280 "#a0575e")
+    (cons 300 "#804f54")
+    (cons 320 "#5f4749")
+    (cons 340 "#525252")
+    (cons 360 "#525252")))
+ '(vc-annotate-very-old-color nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -57,28 +84,46 @@
 
 (tool-bar-mode -1)
 
+;; helm config, M-x for helm-M-x
+
+(use-package helm
+  :ensure t
+  :init
+  (require 'helm-config)
+  (bind-key "M-x" 'helm-M-x))
+
+(use-package helm-projectile
+  :ensure t
+  :after helm--action-prompt
+  :init
+  (helm-projectile-on))
+
+;; Ace jump
+
+(use-package ace-jump-mode
+  :ensure t
+  :commands ace-jump-modei
+  :init)
+
 (use-package evil
   :ensure t
+  :after helm
   :config
   (evil-mode 1)
   (evil-set-initial-state 'bs-mode 'emacs)
   (evil-set-initial-state 'dashboard-mode 'emacs)
-  (evil-set-initial-state 'treemacs-mode 'emacs)
   (evil-ex-define-cmd "sh" 'split-window-horizontally)
   (evil-ex-define-cmd "sv" 'split-window-vertically)
-  (define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode))
-
-
-(use-package all-the-icons
-  :if window-system
-  :ensure t)
+  (evil-global-set-key 'normal "b" 'helm-mini)
+  (evil-global-set-key 'normal "e" 'helm-find-files)
+  (evil-global-set-key 'normal "g" 'helm-projectile-grep)
+  (evil-global-set-key 'normal (kbd "SPC") 'ace-jump-mode))
+  ;(evil-global-set-key 'normal "f" 'helm-projectile-find-file)
 
 (use-package doom-themes
   :ensure t
   :init
-  (load-theme 'doom-dracula t)
-  (doom-themes-treemacs-config))
-
+  (load-theme 'doom-peacock t))
 
 (use-package solaire-mode
   :ensure t
@@ -131,15 +176,6 @@
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
-;; beacon - cursor highlight
-
-(use-package beacon
-  :if window-system
-  :diminish
-  :ensure t
-  :init
-  (beacon-mode 1))
-
 ;; dashboard - better initial widow (breaks colors in terminal!)
 
 (use-package dashboard
@@ -150,7 +186,7 @@
   (setq dashboard-startup-banner 'logo)
   (add-hook 'dashboard-mode-hook (display-line-numbers-mode -1))
   :config
-(dashboard-setup-startup-hook))
+  (dashboard-setup-startup-hook))
 
 ;; anzu - search highlighting
 
@@ -176,22 +212,6 @@
   (setq powerline-height 22)
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state))
 
-;; Ace jump
-
-(use-package ace-jump-mode
-  :ensure t
-  :commands ace-jump-mode
-  :init
-  (bind-key "C-." 'ace-jump-mode))
-
-;; helm config, M-x for helm-M-x
-
-(use-package helm
-  :ensure t
-  :init
-  (require 'helm-config)
-  (bind-key "M-x" 'helm-M-x))
-
 ;; C-x t for transpose-frame
 
 (use-package transpose-frame
@@ -213,7 +233,15 @@
 ;; vimish-fold
 
 (use-package vimish-fold
-  :ensure t)
+  :ensure t
+  :after evil
+  :init
+  (vimish-fold-global-mode)
+  (evil-global-set-key 'visual (kbd "f c") 'vimish-fold)
+  (evil-global-set-key 'normal (kbd "f c") 'vimish-fold)
+  (evil-global-set-key 'normal (kbd "f f") 'vimish-fold-toggle)
+  (evil-global-set-key 'normal (kbd "f u") 'vimish-fold-unfold)
+  (evil-global-set-key 'normal (kbd "f d") 'vimish-fold-delete))
 
 ;; default smartparens-mode config
 
@@ -287,6 +315,8 @@
   :init
   (global-set-key (kbd "<f5>") 'treemacs)
   (global-set-key (kbd "<f6>") 'treemacs-projectile)
+  (global-set-key (kbd "<f7>") 'treemacs-select-window)
+  (evil-global-set-key 'normal "t" 'treemacs-select-window)
   (setq treemacs-position 'right)
   ;(setq treemacs-no-png-images 1)
   (setq treemacs-never-persist t)
@@ -298,59 +328,63 @@
   :ensure t
   :requires treemacs)
 
+(use-package treemacs-evil
+  :ensure t
+  :requires treemacs)
+
 ;; ================================== NASM ==================================
 
 ;; enable nasm-mode
 
-(use-package nasm-mode
-  :ensure t
-  :defer t
-  :init
-  ;; custom compile
-  (add-hook 'nasm-mode-hook
-            (lambda ()
-              (set (make-local-variable 'compile-command)
-                   (concat
-		    "nasm "
-		    (file-name-sans-extension buffer-file-name)
-		    ".asm -felf64 -o "
-		    (file-name-sans-extension buffer-file-name)
-		    ".o && ld -m elf_x86_64 "
-		    (file-name-sans-extension buffer-file-name)
-		    ".o -o "
-		    (file-name-sans-extension buffer-file-name))
-		   )
-	      )
-	    )
-  ;; bind file hooks
-  (add-to-list 'auto-mode-alist '("\\.nasm\\'" . nasm-mode))
-  (add-to-list 'auto-mode-alist '("\\.asm\\'" . nasm-mode))
-  ;; C-c C-c for compiling
-  (bind-key "C-c C-c" 'compile))
+;; (use-package nasm-mode
+;;   :ensure t
+;;   :defer t
+;;   :init
+;;   ;; custom compile
+;;   (add-hook 'nasm-mode-hook
+;;             (lambda ()
+;;               (set (make-local-variable 'compile-command)
+;;                    (concat
+;; 		    "nasm "
+;; 		    (file-name-sans-extension buffer-file-name)
+;; 		    ".asm -felf64 -o "
+;; 		    (file-name-sans-extension buffer-file-name)
+;; 		    ".o && ld -m elf_x86_64 "
+;; 		    (file-name-sans-extension buffer-file-name)
+;; 		    ".o -o "
+;; 		    (file-name-sans-extension buffer-file-name))
+;; 		   )
+;; 	      )
+;; 	    )
+;;   ;; bind file hooks
+;;   (add-to-list 'auto-mode-alist '("\\.nasm\\'" . nasm-mode))
+;;   (add-to-list 'auto-mode-alist '("\\.asm\\'" . nasm-mode))
+;;   ;; C-c C-c for compiling
+;;   (bind-key "C-c C-c" 'compile))
 
 ;; ================================ HASKELL =================================
 
 ;; C-c C-c for compiling haskell
 
-(use-package haskell-mode
-  :ensure t
-  :defer t
-  :init
-  ;; C-c C-c for compiling
-  (bind-key "C-c C-c" 'compile)
-  ;; Custom compile
-  (add-hook 'haskell-mode-hook
-            (lambda ()
-              (set (make-local-variable 'compile-command)
-                   (concat
-		    "ghc "
-		    (file-name-sans-extension buffer-file-name)
-		    ".hs -o "
-		    (file-name-sans-extension buffer-file-name)
-		    )
-		   )
-	      )
-	    ))
+;; (use-package haskell-mode
+;;   :ensure t
+;;   :defer t
+;;   :init
+;;   ;; C-c C-c for compiling
+;;   (bind-key "C-c C-c" 'compile)
+;;   ;; Custom compile
+;;   (add-hook 'haskell-mode-hook
+;;             (lambda ()
+;;               (set (make-local-variable 'compile-command)
+;;                    (concat
+;; 		    "ghc "
+;; 		    (file-name-sans-extension buffer-file-name)
+;; 		    ".hs -o "
+;; 		    (file-name-sans-extension buffer-file-name)
+;; 		    )
+;; 		   )
+;; 	      )
+;; 	    ))
 
 ;; ================================ JS/TS/ES ================================
 
@@ -425,17 +459,17 @@
 
 ;; Elm
 
-(use-package elm-mode
-  :ensure t
-  :defer t)
+;; (use-package elm-mode
+;;   :ensure t
+;;   :defer t)
 
 ;; Erlang
 
-(use-package erlang
-  :ensure t
-  :defer t)
+;; (use-package erlang
+;;   :ensure t
+;;   :defer t)
 
-;; F#
+;; f#
 
 ;; (use-package fsharp-mode
 ;;   :ensure t
@@ -445,38 +479,38 @@
 
 ;; Elixir
 
-(use-package alchemist
-  :ensure t
-  :defer t)
+;; (use-package alchemist
+;;   :ensure t
+;;   :defer t)
 
-(use-package elixir-mode
-  :ensure t
-  :defer t
-  :requires (smartparens alchemist)
-  :init
-  ;; alchemist on elixir mode
-  (add-hook 'elixir-mode-hook 'alchemist-mode)
-  :config
-  (sp-with-modes '(elixir-mode)
-    (sp-local-pair "fn" "end"
-		   :when '(("SPC" "RET"))
-		   :actions '(insert navigate))
-    (sp-local-pair "do" "end"
-		   :when '(("SPC" "RET"))
-		   :post-handlers '(sp-ruby-def-post-handler)
-		   :actions '(insert navigate))))
+;; (use-package elixir-mode
+;;   :ensure t
+;;   :defer t
+;;   :requires (smartparens alchemist)
+;;   :init
+;;   ;; alchemist on elixir mode
+;;   (add-hook 'elixir-mode-hook 'alchemist-mode)
+;;   :config
+;;   (sp-with-modes '(elixir-mode)
+;;     (sp-local-pair "fn" "end"
+;; 		   :when '(("SPC" "RET"))
+;; 		   :actions '(insert navigate))
+;;     (sp-local-pair "do" "end"
+;; 		   :when '(("SPC" "RET"))
+;; 		   :post-handlers '(sp-ruby-def-post-handler)
+;; 		   :actions '(insert navigate))))
 
 ;; bison-mode for .l files
 
-(add-to-list 'auto-mode-alist '("\\.l\\'" . c-mode))
+;; (add-to-list 'auto-mode-alist '("\\.l\\'" . c-mode))
 
 ;; prolog-mode for .pl files
 
-(add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode))
+;; (add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode))
 
 ;; c++11 on flycheck
 
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
+;; (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
 
 ;; ================================= PYTHON =================================
 
@@ -498,11 +532,16 @@
   ;:init
   ;(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
 
-(use-package company-jedi
+(use-package anaconda-mode
   :ensure t
   :init
-  (add-hook 'elpy-mode-hook 'jedi:setup)
-  (setq jedi:complete-on-dot t))
+  (add-hook 'python-mode-hook 'anaconda-mode))
+
+(use-package company-anaconda
+  :ensure t
+  :init
+  (eval-after-load "company"
+    '(add-to-list 'company-backends '(company-anaconda :with company-capf))))
 
 (use-package pyenv-mode
   :ensure t
@@ -514,19 +553,19 @@
 ;; spell checking for LaTeX
 
 ;;enable flyspell for text-mode
-(add-hook 'LaTeX-mode-hook #'turn-on-flyspell)
+;;(add-hook 'LaTeX-mode-hook #'turn-on-flyspell)
 
 ;; flyspell use babel settings in LaTeX
 
-(add-to-list 'load-path "~/.emacs.d/flyspell-babel/")
+;; (add-to-list 'load-path "~/.emacs.d/flyspell-babel/")
 
-(autoload 'flyspell-babel-setup "flyspell-babel")
-(add-hook 'latex-mode-hook 'flyspell-babel-setup)
-(add-hook 'LaTeX-mode-hook 'flyspell-babel-setup)
+;; (autoload 'flyspell-babel-setup "flyspell-babel")
+;; (add-hook 'latex-mode-hook 'flyspell-babel-setup)
+;; (add-hook 'LaTeX-mode-hook 'flyspell-babel-setup)
 
 ;; remove lines in DocView
 
-(add-hook 'doc-view-mode-hook 'nolinum)
+;; (add-hook 'doc-view-mode-hook 'nolinum)
 
 ;; ================================= END ====================================
 
