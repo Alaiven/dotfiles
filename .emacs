@@ -81,7 +81,36 @@
 
 (eval-when-compile
   ;; Following line is not needed if use-package.el is in ~/.emacs.d
+  ;;(Add-list 'load-path "<path where use-package is installed>")
+  (require 'use-package))
 
+;; ;; ================================= EDITOR =================================
+
+(tool-bar-mode -1)
+
+;; helm config, M-x for helm-M-x
+
+(use-package helm
+  :ensure t
+  :init
+  (require 'helm-config)
+  (bind-key "M-x" 'helm-M-x))
+
+(use-package helm-projectile
+  :ensure t
+  :after helm--action-prompt
+  :init
+  (helm-projectile-on))
+
+;; Ace jump
+
+(use-package ace-jump-mode
+  :ensure t
+  :commands ace-jump-modei
+  :init)
+
+(use-package evil
+  :ensure t
   :after helm
   :config
   (evil-mode 1)
