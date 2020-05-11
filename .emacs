@@ -72,6 +72,8 @@
 (add-to-list 'package-pinned-packages '(spaceline-all-the-icons . "melpa-stable"))
 (add-to-list 'package-pinned-packages '(all-the-icons . "melpa-stable"))
 
+
+
 ;; use-package initial config
 
 (unless (package-installed-p 'use-package)
@@ -79,45 +81,17 @@
 
 (eval-when-compile
   ;; Following line is not needed if use-package.el is in ~/.emacs.d
-  ;;(Add-list 'load-path "<path where use-package is installed>")
-  (require 'use-package))
 
-;; ;; ================================= EDITOR =================================
-
-(tool-bar-mode -1)
-
-;; helm config, M-x for helm-M-x
-
-(use-package helm
-  :ensure t
-  :init
-  (require 'helm-config)
-  (bind-key "M-x" 'helm-M-x))
-
-(use-package helm-projectile
-  :ensure t
-  :after helm--action-prompt
-  :init
-  (helm-projectile-on))
-
-;; Ace jump
-
-(use-package ace-jump-mode
-  :ensure t
-  :commands ace-jump-modei
-  :init)
-
-(use-package evil
-  :ensure t
   :after helm
   :config
   (evil-mode 1)
   (evil-set-initial-state 'dashboard-mode 'emacs)
   (evil-ex-define-cmd "sh" 'split-window-horizontally)
   (evil-ex-define-cmd "sv" 'split-window-vertically)
+  (evil-ex-define-cmd "p" 'execute-extended-command)
   (evil-global-set-key 'normal "b" 'helm-mini)
   (evil-global-set-key 'normal "e" 'helm-find-files)
-  (evil-global-set-key 'normal "g" 'helm-projectile-grep)
+  ;(evil-global-set-key 'normal "g" 'helm-projectile-grep)
   (evil-global-set-key 'normal (kbd "SPC") 'ace-jump-mode))
   ;(evil-global-set-key 'normal "f" 'helm-projectile-find-file)
 
@@ -190,11 +164,26 @@
   (global-anzu-mode +1)
   (setq anzu-cons-mode-line-p nil))
 
-;; spaceline - better powerline
+;; mood-line - better powerline
+
+(defvar evil-state-string "")
 
 (use-package mood-line
   :ensure t
-  :init (mood-line-mode))
+  :init (mood-line-mode)
+  (setq global-mode-string
+	(add-to-list 'global-mode-string '(:eval evil-state-string)))
+  (add-hook 'evil-insert-state-entry-hook (lambda ()
+					    (setq evil-state-string "[I]")))
+  (add-hook 'evil-normal-state-entry-hook (lambda ()
+					    (setq evil-state-string "[N]")))
+  (add-hook 'evil-emacs-state-entry-hook (lambda ()
+					    (setq evil-state-string "[E]")))
+  (add-hook 'evil-replace-state-entry-hook (lambda ()
+					    (setq evil-state-string "[R]")))
+  (add-hook 'evil-visual-state-entry-hook (lambda ()
+					    (setq evil-state-string "[V]"))))
+
 
 ;; C-x t for transpose-frame
 
