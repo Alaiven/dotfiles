@@ -1,4 +1,4 @@
- 
+
 
 
 (require 'package) ;; You might already have this line
@@ -18,10 +18,10 @@
  '(background-color "#202020")
  '(background-mode dark)
  '(cursor-color "#cccccc")
- '(custom-enabled-themes (quote (dracula)))
+ '(custom-enabled-themes nil)
  '(custom-safe-themes
    (quote
-    ("72fda75af7caddec17ba9b49d2f99703c20a5f5f5c4dcec641d34a0b83569e88" "2cdc13ef8c76a22daa0f46370011f54e79bae00d5736340a5ddfe656a767fddf" "be9645aaa8c11f76a10bcf36aaf83f54f4587ced1b9b679b55639c87404e2499" "0809c08440b51a39c77ec5529f89af83ab256a9d48107b088d40098ce322c7d8" "e1ecb0536abec692b5a5e845067d75273fe36f24d01210bf0aa5842f2a7e029f" "7e78a1030293619094ea6ae80a7579a562068087080e01c2b8b503b27900165c" "d2e9c7e31e574bf38f4b0fb927aaff20c1e5f92f72001102758005e53d77b8c9" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" "59e82a683db7129c0142b4b5a35dbbeaf8e01a4b81588f8c163bd255b76f4d21" "8885761700542f5d0ea63436874bf3f9e279211707d4b1ca9ed6f53522f21934" default)))
+    ("8a0c35b74b0407ca465dd8db28c9136d5f539868d4867565ee214ac85ceb0d3a" "3577ee091e1d318c49889574a31175970472f6f182a9789f1a3e9e4513641d86" "d71aabbbd692b54b6263bfe016607f93553ea214bc1435d17de98894a5c3a086" "76bfa9318742342233d8b0b42e824130b3a50dcc732866ff8e47366aed69de11" "1526aeed166165811eefd9a6f9176061ec3d121ba39500af2048073bea80911e" "24132f7b6699c6e0118d742351b74141bac3c4388937e40db9207554eaae78c9" "6bacece4cf10ea7dd5eae5bfc1019888f0cb62059ff905f37b33eec145a6a430" "e30e72b10b9c7887ff8adcd1a25b5c6eaa32665e0f8f40994e5b6d51069d3b2a" "4e764943cc022ba136b80fa82d7cdd6b13a25023da27528a59ac61b0c4f1d16f" "379a804655efccc13a3d446468992bfdfc30ff27d19cfda6f62c7f9c9e7a8a7d" "56911bd75304fdb19619c9cb4c7b0511214d93f18e566e5b954416756a20cc80" "6231254e74298a1cf8a5fee7ca64352943de4b495e615c449e9bb27e2ccae709" "9f15d03580b08dae41a1e5c1f00d1f1aa99fea121ca32c28e2abec9563c6e32c" "1ed5c8b7478d505a358f578c00b58b430dde379b856fbcb60ed8d345fc95594e" "d74c5485d42ca4b7f3092e50db687600d0e16006d8fa335c69cf4f379dbd0eee" "e964832f274625fa45810c688bdbe18caa75a5e1c36b0ca5ab88924756e5667f" "f2b56244ecc6f4b952b2bcb1d7e517f1f4272876a8c873b378f5cf68e904bd59" "dde8c620311ea241c0b490af8e6f570fdd3b941d7bc209e55cd87884eb733b0e" "e074be1c799b509f52870ee596a5977b519f6d269455b84ed998666cf6fc802a" "7f791f743870983b9bb90c8285e1e0ba1bf1ea6e9c9a02c60335899ba20f3c94" "d5f8099d98174116cba9912fe2a0c3196a7cd405d12fa6b9375c55fc510988b5" "7c4cfa4eb784539d6e09ecc118428cd8125d6aa3053d8e8413f31a7293d43169" "2f1518e906a8b60fac943d02ad415f1d8b3933a5a7f75e307e6e9a26ef5bf570" "730a87ed3dc2bf318f3ea3626ce21fb054cd3a1471dcd59c81a4071df02cb601" "c83c095dd01cde64b631fb0fe5980587deec3834dc55144a6e78ff91ebc80b19" "7d708f0168f54b90fc91692811263c995bebb9f68b8b7525d0e2200da9bc903c" "58c3313b4811ed8b30239b1d04816f74d438bcb72626d68181f294b115b7220d" "51956e440cec75ba7e4cff6c79f4f8c884a50b220e78e5e05145386f5b381f7b" "285efd6352377e0e3b68c71ab12c43d2b72072f64d436584f9159a58c4ff545a" "1d50bd38eed63d8de5fcfce37c4bb2f660a02d3dff9cbfd807a309db671ff1af" "1623aa627fecd5877246f48199b8e2856647c99c6acdab506173f9bb8b0a41ac" "fa3bdd59ea708164e7821574822ab82a3c51e262d419df941f26d64d015c90ee" "9b01a258b57067426cc3c8155330b0381ae0d8dd41d5345b5eddac69f40d409b" "99ea831ca79a916f1bd789de366b639d09811501e8c092c85b2cb7d697777f93" "93ed23c504b202cf96ee591138b0012c295338f38046a1f3c14522d4a64d7308" "6b289bab28a7e511f9c54496be647dc60f5bd8f9917c9495978762b99d8c96a0" "10461a3c8ca61c52dfbbdedd974319b7f7fd720b091996481c8fb1dded6c6116" "cd736a63aa586be066d5a1f0e51179239fe70e16a9f18991f6f5d99732cabb32" "fe666e5ac37c2dfcf80074e88b9252c71a22b6f5d2f566df9a7aa4f9bea55ef8" "72fda75af7caddec17ba9b49d2f99703c20a5f5f5c4dcec641d34a0b83569e88" "2cdc13ef8c76a22daa0f46370011f54e79bae00d5736340a5ddfe656a767fddf" "be9645aaa8c11f76a10bcf36aaf83f54f4587ced1b9b679b55639c87404e2499" "0809c08440b51a39c77ec5529f89af83ab256a9d48107b088d40098ce322c7d8" "e1ecb0536abec692b5a5e845067d75273fe36f24d01210bf0aa5842f2a7e029f" "7e78a1030293619094ea6ae80a7579a562068087080e01c2b8b503b27900165c" "d2e9c7e31e574bf38f4b0fb927aaff20c1e5f92f72001102758005e53d77b8c9" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" "59e82a683db7129c0142b4b5a35dbbeaf8e01a4b81588f8c163bd255b76f4d21" "8885761700542f5d0ea63436874bf3f9e279211707d4b1ca9ed6f53522f21934" default)))
  '(fci-rule-color "#383838")
  '(foreground-color "#cccccc")
  '(jdee-db-active-breakpoint-face-colors (cons "#000000" "#80A0C2"))
@@ -30,8 +30,10 @@
  '(objed-cursor-color "#C16069")
  '(package-selected-packages
    (quote
-    (company-anaconda anaconda-mode treemacs-evil evil-tutor solaire-mode dracula-theme cyberpunk-theme noctilux-theme spaceline anzu diminish web-mode vimish-fold use-package treemacs-projectile transpose-frame tide symon sublimity solarized-theme smartparens rainbow-delimiters pyenv-mode py-autopep8 powerline ng2-mode nasm-mode modern-cpp-font-lock material-theme magit json-mode js2-mode jedi helm haskell-mode fsharp-mode focus flycheck-color-mode-line fiplr exec-path-from-shell erlang elpy elm-mode dired-toggle dired-subtree dimmer dashboard company-jedi beacon alchemist ace-popup-menu ace-jump-mode)))
+    (web-mode vimish-fold use-package treemacs-projectile treemacs-evil transpose-frame tide solaire-mode smartparens rainbow-delimiters pyvenv py-autopep8 ng2-mode mood-line magit lsp-python-ms json-mode js2-mode helm-projectile flycheck-color-mode-line fiplr doom-themes diminish dashboard company anzu all-the-icons ace-jump-mode)))
  '(pdf-view-midnight-colors (cons "#eceff4" "#323334"))
+ '(rustic-ansi-faces
+   ["#fafafa" "#e45649" "#50a14f" "#986801" "#4078f2" "#a626a4" "#0184bc" "#383a42"])
  '(vc-annotate-background "#323334")
  '(vc-annotate-color-map
    (list
@@ -64,8 +66,8 @@
 ;; ================================== MINE ==================================
 
 (add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/")
-             t)
+              '("melpa-stable" . "https://stable.melpa.org/packages/")
+              t)
 (add-to-list 'package-pinned-packages '(spaceline . "melpa-stable"))
 (add-to-list 'package-pinned-packages '(spaceline-all-the-icons . "melpa-stable"))
 (add-to-list 'package-pinned-packages '(all-the-icons . "melpa-stable"))
@@ -80,7 +82,7 @@
   ;;(Add-list 'load-path "<path where use-package is installed>")
   (require 'use-package))
 
-;; ================================= EDITOR =================================
+;; ;; ================================= EDITOR =================================
 
 (tool-bar-mode -1)
 
@@ -110,7 +112,6 @@
   :after helm
   :config
   (evil-mode 1)
-  (evil-set-initial-state 'bs-mode 'emacs)
   (evil-set-initial-state 'dashboard-mode 'emacs)
   (evil-ex-define-cmd "sh" 'split-window-horizontally)
   (evil-ex-define-cmd "sv" 'split-window-vertically)
@@ -123,21 +124,14 @@
 (use-package doom-themes
   :ensure t
   :init
-  (load-theme 'doom-peacock t))
+  (load-theme 'doom-one-light t))
 
-(use-package solaire-mode
-  :ensure t
+(use-package all-the-icons
+  :if window-system
   :after doom-themes
-  :hook ((change-major-mode after-revert ediff-prepare-buffer) . turn-on-solaire-mode)
-  :config
-  (add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer)
-  (solaire-mode-swap-bg))
-
-(use-package exec-path-from-shell
   :ensure t
-  :init
-  (exec-path-from-shell-initialize)
-  (exec-path-from-shell-copy-env "WORKON_HOME"))
+  :config
+  (doom-themes-treemacs-config))
 
 ;; diminish - shorter names for minor modes
 
@@ -148,7 +142,8 @@
 
 ;; line numbers
 
-(global-display-line-numbers-mode)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(add-hook 'text-mode-hook 'display-line-numbers-mode)
 
 ;; no scrollbars
 
@@ -159,10 +154,6 @@
 ;; start maximized
 
 ;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
-
-;; C-x C-b for buffer window
-
-(global-set-key (kbd "C-x C-b") 'bs-show)
 
 ;; switch buffers with shift + arrow
 
@@ -181,12 +172,14 @@
 (use-package dashboard
   :if window-system
   :ensure t
-  :init
-  (setq dashboard-items '((recents  . 5)))
-  (setq dashboard-startup-banner 'logo)
-  (add-hook 'dashboard-mode-hook (display-line-numbers-mode -1))
   :config
-  (dashboard-setup-startup-hook))
+  (dashboard-setup-startup-hook)
+  (dashboard-modify-heading-icons '((recents . "book")))
+  (setq dashboard-items '((recents  . 5)
+                          (projects . 5)))
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-navigator t)
+  (setq dashboard-startup-banner 'logo))
 
 ;; anzu - search highlighting
 
@@ -199,25 +192,17 @@
 
 ;; spaceline - better powerline
 
-(use-package spaceline
-  :if window-system
+(use-package mood-line
   :ensure t
-  :init
-  (require 'spaceline-config)
-  :config
-  (spaceline-spacemacs-theme)
-  (spaceline-helm-mode)
-  (spaceline-toggle-evil-state-on)
-  (spaceline-toggle-projectile-root-on)
-  (setq powerline-height 22)
-  (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state))
+  :init (mood-line-mode))
 
 ;; C-x t for transpose-frame
 
 (use-package transpose-frame
   :ensure t
   :init
-  (global-set-key (kbd "C-x t") 'transpose-frame))
+  (global-set-key (kbd "C-x t") 'transpose-frame)
+  (evil-ex-define-cmd "tf" 'transpose-frame))
 
 ;; ================================== MISC ==================================
 
@@ -228,7 +213,9 @@
   :init
   (add-hook 'after-init-hook 'global-company-mode)
   ;; aligns annotation to the right hand side
-  (setq company-tooltip-align-annotations t))
+  (setq company-tooltip-align-annotations t)
+  (setq company-minimum-prefix-length 1
+      company-idle-delay 0.0))
 
 ;; vimish-fold
 
@@ -264,10 +251,8 @@
 (use-package magit
   :ensure t
   :init
-  ;; magit <f4> for git status
-  (global-set-key (kbd "<f4>") 'magit-status)
-  ;; magit <C-f4> for git popup
-  (global-set-key (kbd "<C-f4>") 'magit-dispatch-popup)
+  (evil-ex-define-cmd "ms" 'magit-status)
+  (evil-ex-define-cmd "md" 'magit-dispatch-popup)
   :hook (magit-status-mode . (lambda () (setq mode-line-format nil)))
 )
 
@@ -298,6 +283,7 @@
   (projectile-mode +1))
 
 ;; fiplr - shortcut
+;; TODO - BARELY USED
 
 (use-package fiplr
   :ensure t
@@ -317,13 +303,11 @@
   (global-set-key (kbd "<f6>") 'treemacs-projectile)
   (global-set-key (kbd "<f7>") 'treemacs-select-window)
   (evil-global-set-key 'normal "t" 'treemacs-select-window)
-  (setq treemacs-position 'right)
-  ;(setq treemacs-no-png-images 1)
-  (setq treemacs-never-persist t)
-  (add-hook 'treemacs-mode-hook 'treemacs-follow-mode))
-  ;;:config
-  ;;(add-hook 'treemacs-mode-hook (display-line-numbers-mode -1))) ;; CAUSES BUG
-
+  :config
+  (progn
+    (setq treemacs-position 'right)
+    (treemacs-follow-mode t)))
+  
 (use-package treemacs-projectile
   :ensure t
   :requires treemacs)
@@ -331,6 +315,13 @@
 (use-package treemacs-evil
   :ensure t
   :requires treemacs)
+
+;; ================================== LSP ===================================
+
+(use-package lsp-mode
+  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+         (python-mode . lsp-deferred))
+  :commands lsp)
 
 ;; ================================== NASM ==================================
 
@@ -515,38 +506,25 @@
 ;; ================================= PYTHON =================================
 
 ;; Set-up Elpy
-
-(use-package elpy
+(use-package lsp-python-ms
   :ensure t
-  :requires flycheck
-  :init
-  (with-eval-after-load 'python (elpy-enable))
-  (add-hook 'elpy-mode-hook 'flycheck-mode)
-  (setq elpy-rpc-python-command "python")
-  :config
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules)))
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-python-ms)
+                          (lsp-deferred))))
 
 (use-package py-autopep8
   :ensure t
-  :requires elpy)
-  ;:init
-  ;(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
-
-(use-package anaconda-mode
-  :ensure t
+  :requires elpy
   :init
-  (add-hook 'python-mode-hook 'anaconda-mode))
+  (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
 
-(use-package company-anaconda
+(use-package pyvenv
   :ensure t
-  :init
-  (eval-after-load "company"
-    '(add-to-list 'company-backends '(company-anaconda :with company-capf))))
-
-(use-package pyenv-mode
-  :ensure t
-  :init
-  (with-eval-after-load 'python (pyenv-mode)))
+  :defer t
+  :diminish
+  :config
+  (setenv "WORKON_HOME" "/Users/maciej/miniconda3")
+  (pyvenv-mode t))
 
 ;; ================================= LaTeX ==================================
 
@@ -568,4 +546,3 @@
 ;; (add-hook 'doc-view-mode-hook 'nolinum)
 
 ;; ================================= END ====================================
-
