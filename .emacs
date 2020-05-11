@@ -323,16 +323,19 @@
   (evil-global-set-key 'normal "t" 'treemacs-select-window)
   :config
   (progn
-    (setq treemacs-position 'right)
-    (treemacs-follow-mode t)))
-  
+   (setq treemacs-position 'right)
+   (treemacs-follow-mode t)))
+
 (use-package treemacs-projectile
   :ensure t
   :requires treemacs)
 
 (use-package treemacs-evil
   :ensure t
-  :requires treemacs)
+  :requires treemacs
+  :init
+  (evil-define-key 'treemacs treemacs-mode-map (kbd "a") #'treemacs-TAB-action))
+
 
 ;; ================================== LSP ===================================
 
