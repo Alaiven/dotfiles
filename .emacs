@@ -65,15 +65,6 @@
 
 ;; ================================== MINE ==================================
 
-(add-to-list 'package-archives
-              '("melpa-stable" . "https://stable.melpa.org/packages/")
-              t)
-(add-to-list 'package-pinned-packages '(spaceline . "melpa-stable"))
-(add-to-list 'package-pinned-packages '(spaceline-all-the-icons . "melpa-stable"))
-(add-to-list 'package-pinned-packages '(all-the-icons . "melpa-stable"))
-
-
-
 ;; use-package initial config
 
 (unless (package-installed-p 'use-package)
