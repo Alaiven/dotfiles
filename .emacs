@@ -109,6 +109,8 @@
   (evil-ex-define-cmd "sh" 'split-window-horizontally)
   (evil-ex-define-cmd "sv" 'split-window-vertically)
   (evil-ex-define-cmd "p" 'execute-extended-command)
+  (evil-ex-define-cmd "ow" 'other-frame)
+  (evil-ex-define-cmd "cw" 'make-frame-command)
   (evil-global-set-key 'normal "b" 'helm-mini)
   (evil-global-set-key 'normal "e" 'helm-find-files)
   ;(evil-global-set-key 'normal "g" 'helm-projectile-grep)
